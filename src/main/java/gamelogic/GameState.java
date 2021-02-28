@@ -17,28 +17,33 @@ public class GameState {
         selector = new Cell(0, 0);
     }
 
+    // TODO: Jop
     public void undo() {
     }
 
+    // TODO: Jop
     public void redo() {
     }
 
+    // TODO: Yingdi (Move selector to the direction dir there is a function called applyDir in Cell you can use; maybe implement isValidMove first)
     public void move(Direction dir) {
     }
 
+    // TODO: Tibi (Add selector to current path (gameFrames.top) & push it the gameFrames stack & check if buffer is already full in which case just return)
     public void confirmSelector() {
     }
 
-    //TODO: Implement me
+    // TODO: Yingdi
     private boolean isValidMove(Direction dir) {
         return false;
     }
 
-    //TODO: Implement me
+    // TODO: Yingdi Assignment 3
     public boolean isSequenceCompleted(String[] seq) {
         return false;
     }
 
+    // TODO: Yingdi Assignment 3
     public int getScore() {
         return 0;
     }

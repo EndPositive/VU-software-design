@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import main.java.gamelogic.GameState;
 
+// TODO: Yingdi Assignment 3 show hover effects over currently selected row/column
 public class GridGUI extends GUIElement {
     public GridGUI(float x, float y) {
         super(x, y);

@@ -1,5 +1,6 @@
 package main.java.gui;
 
+// TODO: Tibi
 public class TimerGUI extends GUIElement {
     private long startTime;
     private final long totalTime;
