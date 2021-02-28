@@ -23,6 +23,11 @@ public class Cell {
     }
 
     @Override
+    public int hashCode() {
+        return x * 10000 + y;
+    }
+
+    @Override
     public boolean equals(Object givenCell) {
         if (!(givenCell instanceof Cell)) return false;
 
