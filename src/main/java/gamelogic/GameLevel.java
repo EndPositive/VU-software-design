@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class GameLevel {
+    public int matrixSize;
     public int bufferLength;
     public final List<List<String>> solutions = new ArrayList<>();
     public final Map<Cell, String> matrix = new HashMap<>();
@@ -31,6 +32,8 @@ public class GameLevel {
                 i++;
             } else break;
         }
+
+        matrixSize = i;
 
         while (sc.hasNextLine()) {
             solutions.add(Arrays.asList(sc.nextLine().split("\\s+")));

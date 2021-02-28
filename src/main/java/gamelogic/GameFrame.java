@@ -7,11 +7,11 @@ import java.util.List;
 
 public class GameFrame {
     public final List<Cell> buffer;
-    private final Cell selector;
+    private final int matrixSize;
 
-    public GameFrame(List<Cell> buffer, Cell selector) {
+    public GameFrame(List<Cell> buffer, int size) {
         this.buffer = buffer;
-        this.selector = selector;
+        this.matrixSize = size;
     }
 
     //TODO: Implement me
