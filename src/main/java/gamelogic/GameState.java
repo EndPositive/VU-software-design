@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class GameState {
     public final GameLevel gameLevel;
-    private final Stack<GameFrame> gameFrames = new Stack<>();
+    public final Stack<GameFrame> gameFrames = new Stack<>();
     private final Stack<GameFrame> undoFrames = new Stack<>();
 
     public GameState(GameLevel gameLevel) {

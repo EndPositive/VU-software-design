@@ -6,11 +6,11 @@ import main.java.misc.Direction;
 import java.util.List;
 
 public class GameFrame {
-    private final List<Cell> path;
+    public final List<Cell> buffer;
     private final Cell selector;
 
-    public GameFrame(List<Cell> path, Cell selector) {
-        this.path = path;
+    public GameFrame(List<Cell> buffer, Cell selector) {
+        this.buffer = buffer;
         this.selector = selector;
     }
 

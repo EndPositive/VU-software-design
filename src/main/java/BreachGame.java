@@ -2,7 +2,6 @@ package main.java;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import main.java.gamelogic.GameLevel;
 import main.java.gamelogic.GameState;
 import main.java.screens.GameScreen;
@@ -14,7 +13,7 @@ public class BreachGame extends Game {
     private GameState gameState;
     private Screen currentScreen;
 
-    private SpriteBatch batch;
+    //private SpriteBatch batch;
 
     public BreachGame(String filePath) {
         try {
@@ -28,12 +27,12 @@ public class BreachGame extends Game {
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
+        //batch = new SpriteBatch();
         setScreen(currentScreen);
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
+        //batch.dispose();
     }
 }

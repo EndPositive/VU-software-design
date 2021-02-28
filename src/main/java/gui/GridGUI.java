@@ -1,7 +1,6 @@
 package main.java.gui;
 
 import main.java.gamelogic.GameState;
-import main.java.misc.Cell;
 
 //TODO: Implement me
 public class GridGUI extends GUIElement {
@@ -13,11 +12,8 @@ public class GridGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                font.draw(batch, gameState.gameLevel.matrix.get(new Cell(i, j)), x + i * 20, j * 20 + y);
-            }
-        }
+        //System.out.println(Gdx.graphics.getWidth());
+        gameState.gameLevel.matrix.forEach((key, value) -> font.draw(batch, value, x + key.x * 20, y + (-key.y) * 20));
 
         batch.end();
     }
