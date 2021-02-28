@@ -1,6 +1,7 @@
 package main.java.gamelogic;
 
 import main.java.misc.Cell;
+import main.java.misc.Direction;
 
 import java.util.Stack;
 
@@ -21,6 +22,6 @@ public class GameState {
     public void redo() {
     }
 
-    public void move() {
+    public void move(Direction dir) {
     }
 }
