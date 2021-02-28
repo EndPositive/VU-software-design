@@ -32,9 +32,6 @@ public class GameLevel {
             } else break;
         }
 
-        //matrix.forEach((key, value) -> System.out.print("(" + key.x + "," + key.y + ") : " + value + "\n"));
-
-
         while (sc.hasNextLine()) {
             solutions.add(Arrays.asList(sc.nextLine().split("\\s+")));
         }
