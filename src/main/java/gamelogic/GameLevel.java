@@ -27,7 +27,7 @@ public class GameLevel {
                 String[] splitLine = line.split("\\s+");
 
                 for (int j = 0; j < splitLine.length; j++)
-                    matrix.put(new Cell(j, i), splitLine[j]);
+                    matrix.put(new Cell(j, i), splitLine[j].toUpperCase());
 
                 i++;
             } else break;
@@ -36,7 +36,7 @@ public class GameLevel {
         matrixSize = i;
 
         while (sc.hasNextLine()) {
-            solutions.add(Arrays.asList(sc.nextLine().split("\\s+")));
+            solutions.add(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+")));
         }
     }
 }

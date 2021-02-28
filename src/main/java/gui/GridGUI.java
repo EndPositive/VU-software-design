@@ -14,12 +14,12 @@ public class GridGUI extends GUIElement {
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.rect(x + gameState.selector.x * 20 - 5, y - gameState.selector.y * 20 - 15, 20, 20);
+        shapeRenderer.rect(x + gameState.selector.x * 30, y - gameState.selector.y * 30 - 15, 20, 20);
         shapeRenderer.end();
 
         batch.begin();
 
-        gameState.gameLevel.matrix.forEach((key, value) -> font.draw(batch, value, x + key.x * 20, y - key.y * 20));
+        gameState.gameLevel.matrix.forEach((key, value) -> font.draw(batch, value, x + key.x * 30, y - key.y * 30));
 
         batch.end();
     }

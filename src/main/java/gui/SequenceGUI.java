@@ -18,7 +18,7 @@ public class SequenceGUI extends GUIElement {
         font.setColor(Color.WHITE);
         for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
             for (int j = 0; j < gameState.gameLevel.solutions.get(i).size(); j++) {
-                font.draw(batch, gameState.gameLevel.solutions.get(i).get(j), x + j * 20, y - i * 20 - 20);
+                font.draw(batch, gameState.gameLevel.solutions.get(i).get(j), x + j * 30, y - i * 30 - 30);
             }
         }
 
