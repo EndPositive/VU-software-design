@@ -20,7 +20,6 @@ public class BufferGUI extends GUIElement {
         } catch (EmptyStackException ignored) {
         }
 
-
         for (int i = 0; i < gameState.gameLevel.bufferLength; i++) {
             font.draw(batch, "_", x + i * 20, y - 2);
 
