@@ -1,4 +1,4 @@
-package misc;
+package main.java.misc;
 
 public class Cell {
     public float x, y;

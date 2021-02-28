@@ -1,4 +1,4 @@
-package GUI;
+package main.java.gui;
 
 //TODO: Implement me
 public class ScoreGUI extends GUIElement {

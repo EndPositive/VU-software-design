@@ -1,4 +1,4 @@
-package GUI;
+package main.java.gui;
 
 //TODO: Implement me
 public class GridGUI extends GUIElement {

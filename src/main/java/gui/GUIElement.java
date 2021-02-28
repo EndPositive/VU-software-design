@@ -1,8 +1,8 @@
-package GUI;
+package main.java.gui;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import misc.GameFrame;
+import main.java.gamelogic.GameFrame;
 
 public abstract class GUIElement {
     private SpriteBatch batch;

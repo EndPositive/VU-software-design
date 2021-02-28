@@ -1,4 +1,4 @@
-package screens;
+package main.java.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;

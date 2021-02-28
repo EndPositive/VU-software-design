@@ -1,4 +1,7 @@
-package misc;
+package main.java.gamelogic;
+
+import main.java.misc.Cell;
+import main.java.misc.Direction;
 
 public class GameFrame {
     private Cell[] path;

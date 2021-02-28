@@ -1,10 +1,12 @@
-package misc;
+package main.java.gamelogic;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import main.java.misc.Cell;
 
 public class GameLevel {
     public int buffer;

@@ -1,4 +1,4 @@
-package GUI;
+package main.java.gui;
 
 public class TimerGUI extends GUIElement {
     private long timeCreated = System.currentTimeMillis();

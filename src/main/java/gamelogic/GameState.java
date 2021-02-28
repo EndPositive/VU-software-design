@@ -1,4 +1,4 @@
-package misc;
+package main.java.gamelogic;
 
 public class GameState {
     public void undo() {
