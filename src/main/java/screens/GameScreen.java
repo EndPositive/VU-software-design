@@ -1,6 +1,8 @@
 package main.java.screens;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import main.java.gamelogic.GameState;
 import main.java.gui.BufferGUI;
@@ -34,5 +36,7 @@ public class GameScreen extends ScreenAdapter {
         gridGUI.render(gameState);
         sequenceGUI.render(gameState);
         bufferGUI.render(gameState);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();
     }
 }
