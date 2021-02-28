@@ -51,5 +51,6 @@ public class GameScreen extends ScreenAdapter {
         if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) gameState.undo();
         if (Gdx.input.isKeyPressed(Keys.R)) gameState.redo();
         if (Gdx.input.isKeyPressed(Keys.ENTER)) game.setScreen(new GameOverScreen(game, gameState));
+        if (Gdx.input.isKeyPressed(Keys.E)) game.setScreen(new EasterEggScreen());
     }
 }

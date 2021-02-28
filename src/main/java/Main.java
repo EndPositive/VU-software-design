@@ -12,6 +12,7 @@ public class Main {
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.height = 350;
+        config.title = "Breach Protocol";
         new LwjglApplication(new BreachGame(arg[0]), config);
     }
 }
