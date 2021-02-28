@@ -1,16 +1,19 @@
 package main.java.gui;
 
 public class TimerGUI extends GUIElement {
-    private long timeCreated = System.currentTimeMillis();
-    private long totalTime;
+    private long startTime;
+    private final long totalTime;
 
-    //TODO: Implement me
     public TimerGUI(long time, float x, float y) {
         super(x, y);
+        totalTime = time;
     }
 
-    //TODO: Implement me
+    public void start() {
+        startTime = System.currentTimeMillis();
+    }
+
     public long timeLeft() {
-        return 0;
+        return startTime + totalTime - System.currentTimeMillis();
     }
 }
