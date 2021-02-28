@@ -14,9 +14,8 @@ public class GameLevel {
     public String[][] solutions = new String[4][];
     public Map<Cell, String> matrix = new HashMap<>();
 
-    //TODO: pass a 'String path' in the definition
-    public GameLevel() throws FileNotFoundException {
-        File file = new File("C:\\Users\\sebii\\Desktop\\software-design-vu-Assignment2\\src\\resources\\01.txt");
+    public GameLevel(String filePath) throws FileNotFoundException {
+        File file = new File(filePath);
         Scanner sc = new Scanner(file);
 
         this.buffer = Integer.parseInt(sc.nextLine());

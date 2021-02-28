@@ -9,16 +9,19 @@ import java.io.FileNotFoundException;
 
 public class Main {
 	public static void main (String[] arg) {
-        //Cell cell = new Cell(1,1);
+        if (arg.length < 1) {
+            System.err.println("No input file given");
+            System.exit(-1);
+        }
+
         GameLevel gameLevel;
 
         try {
-            gameLevel = new GameLevel();
+            gameLevel = new GameLevel(arg[0]);
         } catch (FileNotFoundException e) {
             System.out.println(e.toString());
             return;
         }
-
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         new LwjglApplication(new BreachGame(), config);
