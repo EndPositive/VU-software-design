@@ -8,6 +8,20 @@ public class Cell {
         this.y = y;
     }
 
+    public Cell applyDir(Direction dir) {
+        if (dir == Direction.DOWN) {
+            return new Cell(x + 1, y);
+        } else if (dir == Direction.UP) {
+            return new Cell(x - 1, y);
+        } else if (dir == Direction.RIGHT) {
+            return new Cell(x, y  + 1);
+        } else if (dir == Direction.LEFT) {
+            return new Cell(x, y - 1);
+        }
+
+        return this;
+    }
+
     @Override
     public boolean equals(Object givenCell) {
         if (!(givenCell instanceof Cell)) return false;
