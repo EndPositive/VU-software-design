@@ -3,8 +3,10 @@ package main.java.gamelogic;
 import main.java.misc.Cell;
 import main.java.misc.Direction;
 
+import java.util.List;
+
 public class GameFrame {
-    private Cell[] path;
+    private List<Cell> path;
     private Cell selector;
     private int score;
 

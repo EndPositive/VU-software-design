@@ -1,7 +1,11 @@
 package main.java.gamelogic;
 
+import java.util.Stack;
+
 public class GameState {
     private final GameLevel gameLevel;
+    private final Stack<GameFrame> gameFrames = new Stack<>();
+    private final Stack<GameFrame> undoFrames = new Stack<>();
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;

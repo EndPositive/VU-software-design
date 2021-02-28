@@ -2,16 +2,13 @@ package main.java.gamelogic;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import main.java.misc.Cell;
 
 public class GameLevel {
     public int buffer;
-    public int numOfSolutions;
-    public String[][] solutions = new String[4][];
+    public List<List<String>> solutions = new ArrayList<>();
     public Map<Cell, String> matrix = new HashMap<>();
 
     public GameLevel(String filePath) throws FileNotFoundException {
@@ -31,10 +28,8 @@ public class GameLevel {
         sc.nextLine();
         sc.nextLine();
 
-        this.numOfSolutions = 0;
         while (sc.hasNextLine()) {
-            this.solutions[this.numOfSolutions] = sc.nextLine().split("\\s+");
-            this.numOfSolutions++;
+            solutions.add(Arrays.asList(sc.nextLine().split("\\s+")));
         }
     }
 }
