@@ -21,6 +21,7 @@ public class GameOverScreen extends ScreenAdapter {
     public void show() {
     }
 
+    // TODO: Yingdi Assignment 3 render game over screen using ScoreGUI, BufferGUI and current gameState
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
