@@ -9,17 +9,18 @@ public class Cell {
     }
 
     public Cell applyDir(Direction dir) {
-        if (dir == Direction.DOWN) {
-            return new Cell(x + 1, y);
-        } else if (dir == Direction.UP) {
-            return new Cell(x - 1, y);
-        } else if (dir == Direction.RIGHT) {
-            return new Cell(x, y  + 1);
-        } else if (dir == Direction.LEFT) {
-            return new Cell(x, y - 1);
+        switch (dir) {
+            case UP:
+                return new Cell(x, y - 1);
+            case DOWN:
+                return new Cell(x, y + 1);
+            case LEFT:
+                return new Cell(x - 1, y);
+            case RIGHT:
+                return new Cell(x + 1, y);
+            default:
+                return new Cell(0, 0);
         }
-
-        return this;
     }
 
     @Override
