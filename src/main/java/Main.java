@@ -3,7 +3,6 @@ package main.java;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import main.java.gamelogic.GameLevel;
-import main.java.screens.BreachGame;
 
 import java.io.FileNotFoundException;
 
