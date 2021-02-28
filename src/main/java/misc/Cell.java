@@ -1,9 +1,9 @@
 package main.java.misc;
 
 public class Cell {
-    public float x, y;
+    public final int x, y;
 
-    public Cell(float x, float y) {
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
     }

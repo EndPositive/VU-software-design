@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 
 public class GameOverScreen implements Screen {
-    Game game;
+    final Game game;
 
     public GameOverScreen(Game game) {
         this.game = game;

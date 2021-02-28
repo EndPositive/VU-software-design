@@ -11,6 +11,7 @@ public class Main {
         }
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        config.height = 350;
         new LwjglApplication(new BreachGame(arg[0]), config);
     }
 }

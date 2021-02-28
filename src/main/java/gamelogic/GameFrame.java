@@ -6,8 +6,8 @@ import main.java.misc.Direction;
 import java.util.List;
 
 public class GameFrame {
-    private List<Cell> path;
-    private Cell selector;
+    private final List<Cell> path;
+    private final Cell selector;
 
     public GameFrame(List<Cell> path, Cell selector) {
         this.path = path;
