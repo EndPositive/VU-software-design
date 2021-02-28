@@ -8,7 +8,11 @@ import java.util.List;
 public class GameFrame {
     private List<Cell> path;
     private Cell selector;
-    private int score;
+
+    public GameFrame(List<Cell> path, Cell selector) {
+        this.path = path;
+        this.selector = selector;
+    }
 
     //TODO: Implement me
     public boolean isValidMove(Direction dir) {
