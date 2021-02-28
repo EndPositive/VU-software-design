@@ -9,8 +9,8 @@ import java.util.Stack;
 public class GameState {
     public Cell selector;
     public final GameLevel gameLevel;
-    public final Stack<List<Cell>> gameFrames = new Stack<>();
-    private final Stack<List<Cell>> undoFrames = new Stack<>();
+    public final Stack<GameFrame> gameFrames = new Stack<>();
+    private final Stack<GameFrame> undoFrames = new Stack<>();
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
