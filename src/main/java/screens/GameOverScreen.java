@@ -1,9 +1,9 @@
 package main.java.screens;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 
-public class GameOverScreen implements Screen {
+public class GameOverScreen extends ScreenAdapter {
     final Game game;
 
     public GameOverScreen(Game game) {
@@ -16,25 +16,5 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void render(float delta) {
-    }
-
-    @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
-    }
-
-    @Override
-    public void dispose() {
     }
 }

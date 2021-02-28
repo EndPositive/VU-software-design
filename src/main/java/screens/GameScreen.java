@@ -35,12 +35,4 @@ public class GameScreen extends ScreenAdapter {
         sequenceGUI.render(gameState);
         bufferGUI.render(gameState);
     }
-
-    @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void dispose() {
-    }
 }

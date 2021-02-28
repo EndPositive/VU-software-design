@@ -3,7 +3,6 @@ package main.java.gui;
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
 
-//TODO: Implement me
 public class SequenceGUI extends GUIElement {
     public SequenceGUI(float x, float y) {
         super(x, y);
