@@ -27,7 +27,7 @@ public class GameScreen extends ScreenAdapter {
         gridGUI = new GridGUI(20, 300);
         sequenceGUI = new SequenceGUI(220, 300);
         bufferGUI = new BufferGUI(220, 330);
-        timerGUI = new TimerGUI(3, 20, 330);
+        timerGUI = new TimerGUI(60, 20, 330);
     }
 
     @Override
