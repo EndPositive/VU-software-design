@@ -3,6 +3,9 @@ package main.java.gui;
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
 
+import java.util.List;
+
+
 public class SequenceGUI extends GUIElement {
     public SequenceGUI(float x, float y) {
         super(x, y);
@@ -16,11 +19,15 @@ public class SequenceGUI extends GUIElement {
         font.setColor(Color.BLUE);
         font.draw(batch, "Sequences to complete: ", x, y);
 
-        font.setColor(Color.WHITE);
         for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
-            for (int j = 0; j < gameState.gameLevel.solutions.get(i).size(); j++) {
-                if (gameState.isSequenceCompleted(gameState.gameLevel.solutions.get(i))) font.setColor(Color.GREEN);
-                else font.setColor(Color.WHITE);
+            List<String> sequenceTemp = gameState.gameLevel.solutions.get(i);
+            if (gameState.isSequenceCompleted(sequenceTemp)) {
+                font.setColor(Color.GREEN);
+            } else if (sequenceTemp.size() > gameState.gameLevel.bufferLength - gameState.buffer.size()) {
+                font.setColor(Color.RED);
+            } else font.setColor(Color.WHITE);
+
+            for (int j = 0; j < sequenceTemp.size(); j++) {
                 font.draw(batch, gameState.gameLevel.solutions.get(i).get(j), x + j * 30, y - i * 30 - 30);
             }
         }
