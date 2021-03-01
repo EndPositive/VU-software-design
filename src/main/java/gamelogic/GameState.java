@@ -27,7 +27,7 @@ public class GameState {
     public void redo() {
         if (!undoStack.isEmpty()) {
             buffer.push(undoStack.pop());
-            selector = undoStack.peek();
+            selector = buffer.peek();
         }
     }
 
