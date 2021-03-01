@@ -16,7 +16,6 @@ public class SequenceGUI extends GUIElement {
         font.setColor(Color.BLUE);
         font.draw(batch, "Sequences to complete: ", x, y);
 
-        // TODO: Yingdi Assignment 3 (highlight completed cells/sequences)
         font.setColor(Color.WHITE);
         for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
             for (int j = 0; j < gameState.gameLevel.solutions.get(i).size(); j++) {
