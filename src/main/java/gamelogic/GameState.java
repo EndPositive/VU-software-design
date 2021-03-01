@@ -28,6 +28,7 @@ public class GameState {
 
     // TODO: Yingdi (Move selector to the direction dir there is a function called applyDir in Cell you can use; maybe implement isValidMove first)
     public void move(Direction dir) {
+        if (isValidMove(dir)) selector = selector.applyDir(dir);
     }
 
     // TODO: Tibi (Add selector to current path (gameFrames.top) & push it the gameFrames stack & check if buffer is already full in which case just return)
@@ -37,7 +38,8 @@ public class GameState {
 
     // TODO: Yingdi
     private boolean isValidMove(Direction dir) {
-        return false;
+        Cell nextCell = selector.applyDir(dir);
+        return nextCell.x < gameLevel.matrixSize && nextCell.y < gameLevel.matrixSize && nextCell.x >= 0 && nextCell.y >= 0;
     }
 
     // TODO: Yingdi Assignment 3
