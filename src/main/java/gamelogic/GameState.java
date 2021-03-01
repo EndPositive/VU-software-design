@@ -28,7 +28,6 @@ public class GameState {
         }
     }
 
-    // TODO: Yingdi (Move selector to the direction dir there is a function called applyDir in Cell you can use; maybe implement isValidMove first)
     public void move(Direction dir) {
         if (isValidMove(dir)) selector = selector.applyDir(dir);
     }
@@ -40,7 +39,6 @@ public class GameState {
         buffer.push(selector);
     }
 
-    // TODO: Yingdi
     private boolean isValidMove(Direction dir) {
         Cell nextCell = selector.applyDir(dir);
         return nextCell.x < gameLevel.matrixSize &&

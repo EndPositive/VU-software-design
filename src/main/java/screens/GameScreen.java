@@ -20,9 +20,11 @@ public class GameScreen extends ScreenAdapter {
     final GameState gameState;
     final BufferGUI bufferGUI;
     final SequenceGUI sequenceGUI;
+    boolean isKeyDown;
 
     public GameScreen(Game game, GameState gameState) {
         this.game = game;
+        isKeyDown = false;
         this.gameState = gameState;
         gridGUI = new GridGUI(20, 300);
         sequenceGUI = new SequenceGUI(220, 300);
@@ -47,19 +49,40 @@ public class GameScreen extends ScreenAdapter {
         bufferGUI.render(gameState);
         timerGUI.render(gameState);
 
-        if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            if (!timerGUI.hasStarted()) timerGUI.start();
-            gameState.confirmSelector();
-        }
-        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) Gdx.app.exit();
-        if (Gdx.input.isKeyPressed(Keys.UP)) gameState.move(Direction.UP);
-        if (Gdx.input.isKeyPressed(Keys.DOWN)) gameState.move(Direction.DOWN);
-        if (Gdx.input.isKeyPressed(Keys.LEFT)) gameState.move(Direction.LEFT);
-        if (Gdx.input.isKeyPressed(Keys.RIGHT)) gameState.move(Direction.RIGHT);
-        if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) gameState.undo();
-        if (Gdx.input.isKeyPressed(Keys.R)) gameState.redo();
-        if (Gdx.input.isKeyPressed(Keys.ENTER)) game.setScreen(new GameOverScreen(game, gameState));
-        if (Gdx.input.isKeyPressed(Keys.E)) game.setScreen(new EasterEggScreen());
+        if (!isKeyDown) {
+            if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+                isKeyDown = true;
+                if (!timerGUI.hasStarted()) timerGUI.start();
+                gameState.confirmSelector();
+            }
+            if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
+            if (Gdx.input.isKeyPressed(Keys.ESCAPE)) Gdx.app.exit();
+            if (Gdx.input.isKeyPressed(Keys.UP)) {
+                isKeyDown = true;
+                gameState.move(Direction.UP);
+            }
+            if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+                isKeyDown = true;
+                gameState.move(Direction.DOWN);
+            }
+            if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+                isKeyDown = true;
+                gameState.move(Direction.LEFT);
+            }
+            if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+                isKeyDown = true;
+                gameState.move(Direction.RIGHT);
+            }
+            if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) {
+                isKeyDown = true;
+                gameState.undo();
+            }
+            if (Gdx.input.isKeyPressed(Keys.R)) {
+                isKeyDown = true;
+                gameState.redo();
+            }
+            if (Gdx.input.isKeyPressed(Keys.ENTER)) game.setScreen(new GameOverScreen(game, gameState));
+            if (Gdx.input.isKeyPressed(Keys.E)) game.setScreen(new EasterEggScreen());
+        } else isKeyDown = false;
     }
 }
