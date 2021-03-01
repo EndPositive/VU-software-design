@@ -3,7 +3,6 @@ package main.java.gui;
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
 
-// TODO: Tibi
 public class TimerGUI extends GUIElement {
     private long startTime = -1;
     private final long totalTime;
@@ -31,8 +30,8 @@ public class TimerGUI extends GUIElement {
         batch.begin();
         if (startTime != -1) {
             font.setColor(Color.RED);
-            font.draw(batch, "Time left: " + timeLeft(), x, y);
-        } else font.draw(batch, "Time left: " + totalTime / 1000, x, y);
+            font.draw(batch, "Time left: " + timeLeft() + " seconds", x, y);
+        } else font.draw(batch, "Time left: " + totalTime / 1000 + " seconds", x, y);
 
         batch.end();
     }

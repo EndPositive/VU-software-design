@@ -10,6 +10,7 @@ public class SequenceGUI extends GUIElement {
 
     @Override
     public void render(GameState gameState) {
+
         batch.begin();
 
         font.setColor(Color.BLUE);
