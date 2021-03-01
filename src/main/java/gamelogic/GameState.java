@@ -19,13 +19,15 @@ public class GameState {
 
     public void undo() {
         if (!buffer.isEmpty()) {
-            undoStack.add(buffer.pop());
+            undoStack.push(buffer.pop());
+            selector = undoStack.peek();
         }
     }
 
     public void redo() {
         if (!undoStack.isEmpty()) {
             buffer.push(undoStack.pop());
+            selector = undoStack.peek();
         }
     }
 
