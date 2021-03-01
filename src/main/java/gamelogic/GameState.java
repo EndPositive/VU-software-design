@@ -35,9 +35,8 @@ public class GameState {
         if (isValidMove(dir)) selector = selector.applyDir(dir);
     }
 
-    // TODO: Tibi (Add selector to current path (gameFrames.top) & push it the gameFrames stack & check if buffer is already full in which case just return)
-    // You need to clear the undoFrames after each confirmSelector, because it doesn't make sense to be able to redo something after doing something new
     public void confirmSelector() {
+        if (buffer.size() == gameLevel.bufferLength) return;
         undoStack.clear();
         buffer.push(selector);
     }
@@ -51,7 +50,6 @@ public class GameState {
                 (buffer.size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
     }
 
-    // TODO: Yingdi Assignment 3
     public boolean isSequenceCompleted(List<String> seq) {
         if (!buffer.isEmpty()) {
             String bufferString = buffer.stream().map(cl -> gameLevel.matrix.get(cl) + " ").reduce("", String::concat);
