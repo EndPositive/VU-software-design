@@ -3,6 +3,7 @@ package main.java.gamelogic;
 import main.java.misc.Cell;
 import main.java.misc.Direction;
 
+import java.util.List;
 import java.util.Stack;
 
 public class GameState {
@@ -49,7 +50,7 @@ public class GameState {
     }
 
     // TODO: Yingdi Assignment 3
-    public boolean isSequenceCompleted(String[] seq) {
+    public boolean isSequenceCompleted(List<String> seq) {
         return false;
     }
 
