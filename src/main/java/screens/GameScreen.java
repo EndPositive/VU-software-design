@@ -15,17 +15,17 @@ import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 
 public class GameScreen extends ScreenAdapter {
     final Game game;
+    boolean isKeyDown;
     final GridGUI gridGUI;
     final TimerGUI timerGUI;
     final GameState gameState;
     final BufferGUI bufferGUI;
     final SequenceGUI sequenceGUI;
-    boolean isKeyDown;
 
     public GameScreen(Game game, GameState gameState) {
         this.game = game;
-        isKeyDown = false;
         this.gameState = gameState;
+        isKeyDown = false;
         gridGUI = new GridGUI(20, 300);
         sequenceGUI = new SequenceGUI(220, 300);
         bufferGUI = new BufferGUI(220, 330);
