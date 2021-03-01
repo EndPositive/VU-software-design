@@ -58,9 +58,14 @@ public class GameState {
         return false;
     }
 
-    // TODO: Yingdi Assignment 3
     public int getScore() {
-        return 0;
+        long numOfCompletedSeqs = gameLevel.solutions.stream().filter(this::isSequenceCompleted).count();
+        long factorial = 1;
+        for (int i = 1; i <= numOfCompletedSeqs; i++) {
+            factorial = factorial * i;
+        }
+        return (int) Math.round(factorial * 30.0 * numOfCompletedSeqs * gameLevel.bufferLength *
+                (gameLevel.bufferLength - buffer.size() + 1) / 10.0);
     }
 
 }
