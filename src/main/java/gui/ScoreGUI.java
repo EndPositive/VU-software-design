@@ -8,7 +8,6 @@ public class ScoreGUI extends GUIElement {
         super(x, y);
     }
 
-    // TODO: Yingdi Assignment 3 simple GUI that displays the score from gameState.getScore() at x,y
     @Override
     public void render(GameState gameState) {
         batch.begin();
