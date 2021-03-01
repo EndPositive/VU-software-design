@@ -53,6 +53,10 @@ public class GameState {
 
     // TODO: Yingdi Assignment 3
     public boolean isSequenceCompleted(List<String> seq) {
+        if (!buffer.isEmpty()) {
+            String bufferString = buffer.stream().map(cl -> gameLevel.matrix.get(cl) + " ").reduce("", String::concat);
+            return bufferString.contains(String.join(" ", seq));
+        }
         return false;
     }
 
