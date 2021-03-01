@@ -10,20 +10,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 
 public class EasterEggScreen extends ScreenAdapter {
-    SpriteBatch batch;
-    BitmapFont font;
-    Texture img;
+    final SpriteBatch batch;
+    final BitmapFont font;
+    final Texture tibiImg, chrisImg, jopImg;
 
     public EasterEggScreen() {
         batch = new SpriteBatch();
         font = new BitmapFont();
-        img = new Texture("./resources/tibi.png");
-
+        tibiImg = new Texture("./resources/tibi.png");
+        chrisImg = new Texture("./resources/chris.png");
+        jopImg = new Texture("./resources/jop.png");
     }
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -31,7 +31,9 @@ public class EasterEggScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(img, 0, 0, 200, 200);
+        batch.draw(tibiImg, 0, 0, 200, 200);
+        batch.draw(chrisImg, 200, 0, 200, 200);
+        batch.draw(jopImg, 400, 0, 200, 200);
         font.draw(batch, "This is an easter egg", 20, 250);
         batch.end();
 

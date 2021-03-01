@@ -8,6 +8,7 @@ import main.java.gamelogic.GameState;
 import main.java.gui.BufferGUI;
 import main.java.gui.GridGUI;
 import main.java.gui.SequenceGUI;
+import main.java.gui.TimerGUI;
 import main.java.misc.Direction;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
@@ -15,6 +16,7 @@ import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 public class GameScreen extends ScreenAdapter {
     final Game game;
     final GridGUI gridGUI;
+    final TimerGUI timerGUI;
     final GameState gameState;
     final BufferGUI bufferGUI;
     final SequenceGUI sequenceGUI;
@@ -23,8 +25,9 @@ public class GameScreen extends ScreenAdapter {
         this.game = game;
         this.gameState = gameState;
         gridGUI = new GridGUI(20, 300);
-        sequenceGUI = new SequenceGUI(200, 300);
-        bufferGUI = new BufferGUI(200, 330);
+        sequenceGUI = new SequenceGUI(220, 300);
+        bufferGUI = new BufferGUI(220, 330);
+        timerGUI = new TimerGUI(3, 20, 330);
     }
 
     @Override
@@ -32,6 +35,7 @@ public class GameScreen extends ScreenAdapter {
         gridGUI.create();
         sequenceGUI.create();
         bufferGUI.create();
+        timerGUI.create();
     }
 
     @Override
@@ -41,13 +45,18 @@ public class GameScreen extends ScreenAdapter {
         gridGUI.render(gameState);
         sequenceGUI.render(gameState);
         bufferGUI.render(gameState);
+        timerGUI.render(gameState);
 
+        if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            if (!timerGUI.hasStarted()) timerGUI.start();
+            gameState.confirmSelector();
+        }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) Gdx.app.exit();
         if (Gdx.input.isKeyPressed(Keys.UP)) gameState.move(Direction.UP);
         if (Gdx.input.isKeyPressed(Keys.DOWN)) gameState.move(Direction.DOWN);
         if (Gdx.input.isKeyPressed(Keys.LEFT)) gameState.move(Direction.LEFT);
         if (Gdx.input.isKeyPressed(Keys.RIGHT)) gameState.move(Direction.RIGHT);
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) gameState.confirmSelector();
         if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) gameState.undo();
         if (Gdx.input.isKeyPressed(Keys.R)) gameState.redo();
         if (Gdx.input.isKeyPressed(Keys.ENTER)) game.setScreen(new GameOverScreen(game, gameState));
