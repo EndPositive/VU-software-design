@@ -43,7 +43,11 @@ public class GameState {
     // TODO: Yingdi
     private boolean isValidMove(Direction dir) {
         Cell nextCell = selector.applyDir(dir);
-        return nextCell.x < gameLevel.matrixSize && nextCell.y < gameLevel.matrixSize && nextCell.x >= 0 && nextCell.y >= 0;
+        return nextCell.x < gameLevel.matrixSize &&
+                nextCell.y < gameLevel.matrixSize &&
+                nextCell.x >= 0 &&
+                nextCell.y >= 0 &&
+                (buffer.size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
     }
 
     // TODO: Yingdi Assignment 3
