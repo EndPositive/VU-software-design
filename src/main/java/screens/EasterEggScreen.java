@@ -2,6 +2,7 @@ package main.java.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -24,6 +25,13 @@ public class EasterEggScreen extends ScreenAdapter {
 
     @Override
     public void show() {
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyUp(int keycode) {
+                if (keycode == Input.Keys.ESCAPE) Gdx.app.exit();
+                return true;
+            }
+        });
     }
 
     @Override
@@ -36,7 +44,5 @@ public class EasterEggScreen extends ScreenAdapter {
         batch.draw(jopImg, 400, 0, 200, 200);
         font.draw(batch, "This is an easter egg", 20, 250);
         batch.end();
-
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();
     }
 }
