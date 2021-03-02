@@ -68,4 +68,9 @@ public class GameState {
                 (gameLevel.bufferLength - buffer.size() + 1) / 10.0);
     }
 
+    //TODO: Yingdi Assignment 3 implement isSequenceFailed to support highlighting failed sequences
+    public boolean isSequenceFailed(List<String> seq) {
+        return false;
+    }
+
 }
