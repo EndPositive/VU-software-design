@@ -23,7 +23,7 @@ public class SequenceGUI extends GUIElement {
             List<String> sequenceTemp = gameState.gameLevel.solutions.get(i);
             if (gameState.isSequenceCompleted(sequenceTemp)) {
                 font.setColor(Color.GREEN);
-            } else if (sequenceTemp.size() > gameState.gameLevel.bufferLength - gameState.buffer.size()) {
+            } else if (gameState.isSequenceFailed(sequenceTemp)) {
                 font.setColor(Color.RED);
             } else font.setColor(Color.WHITE);
 
