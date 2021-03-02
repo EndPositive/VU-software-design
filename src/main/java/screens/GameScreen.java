@@ -3,6 +3,7 @@ package main.java.screens;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import main.java.gamelogic.GameState;
 import main.java.gui.BufferGUI;
@@ -38,6 +39,26 @@ public class GameScreen extends ScreenAdapter {
         sequenceGUI.create();
         bufferGUI.create();
         timerGUI.create();
+
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyUp(int keycode) {
+                if (keycode == Keys.ENTER) game.setScreen(new GameOverScreen(game, gameState));
+                if (keycode == Keys.E) game.setScreen(new EasterEggScreen());
+                if (keycode == Keys.UP) gameState.move(Direction.UP);
+                if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);
+                if (keycode == Keys.LEFT) gameState.move(Direction.LEFT);
+                if (keycode == Keys.RIGHT) gameState.move(Direction.RIGHT);
+                if (keycode == Keys.SPACE) {
+                    if (!timerGUI.hasStarted()) timerGUI.start();
+                    gameState.confirmSelector();
+                }
+                if (keycode == Keys.BACKSPACE) gameState.undo();
+                if (keycode == Keys.R) gameState.redo();
+                if (keycode == Keys.ESCAPE) Gdx.app.exit();
+                return true;
+            }
+        });
     }
 
     @Override
@@ -49,40 +70,6 @@ public class GameScreen extends ScreenAdapter {
         bufferGUI.render(gameState);
         timerGUI.render(gameState);
 
-        if (!isKeyDown) {
-            if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-                isKeyDown = true;
-                if (!timerGUI.hasStarted()) timerGUI.start();
-                gameState.confirmSelector();
-            }
-            if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
-            if (Gdx.input.isKeyPressed(Keys.ESCAPE)) Gdx.app.exit();
-            if (Gdx.input.isKeyPressed(Keys.UP)) {
-                isKeyDown = true;
-                gameState.move(Direction.UP);
-            }
-            if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-                isKeyDown = true;
-                gameState.move(Direction.DOWN);
-            }
-            if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-                isKeyDown = true;
-                gameState.move(Direction.LEFT);
-            }
-            if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-                isKeyDown = true;
-                gameState.move(Direction.RIGHT);
-            }
-            if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) {
-                isKeyDown = true;
-                gameState.undo();
-            }
-            if (Gdx.input.isKeyPressed(Keys.R)) {
-                isKeyDown = true;
-                gameState.redo();
-            }
-            if (Gdx.input.isKeyPressed(Keys.ENTER)) game.setScreen(new GameOverScreen(game, gameState));
-            if (Gdx.input.isKeyPressed(Keys.E)) game.setScreen(new EasterEggScreen());
-        } else isKeyDown = false;
+        if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
     }
 }
