@@ -59,8 +59,8 @@ public class GameState {
     }
 
     public int getScore() {
-        long numOfCompletedSeqs = gameLevel.solutions.stream().filter(this::isSequenceCompleted).count();
-        long factorial = 1;
+        int numOfCompletedSeqs = (int) gameLevel.solutions.stream().filter(this::isSequenceCompleted).count();
+        int factorial = 1;
         for (int i = 1; i <= numOfCompletedSeqs; i++) {
             factorial = factorial * i;
         }
