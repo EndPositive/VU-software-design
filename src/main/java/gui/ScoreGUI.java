@@ -10,14 +10,16 @@ public class ScoreGUI extends GUIElement {
 
     @Override
     public void render(GameState gameState) {
+        int score = gameState.getScore();
+
         batch.begin();
 
         font.setColor(Color.PINK);
-        font.draw(batch, "You breached the protocol!", x, y);
+        font.draw(batch, score != 0 ? "You breached the protocol!" : "Sometimes in life you fail and sometimes you don't succeed :(", x, y);
         font.draw(batch, "Your score is: ", x, y - 30);
 
         font.setColor(Color.GOLD);
-        font.draw(batch, String.valueOf(gameState.getScore()), x + 10, y - 60);
+        font.draw(batch, String.valueOf(score), x + 10, y - 60);
 
         batch.end();
     }
