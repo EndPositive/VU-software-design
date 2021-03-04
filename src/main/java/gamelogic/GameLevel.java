@@ -12,7 +12,7 @@ public class GameLevel {
     public final List<List<String>> solutions = new ArrayList<>();
     public final Map<Cell, String> matrix = new HashMap<>();
 
-    public GameLevel(String filePath) throws FileNotFoundException {
+    public GameLevel(String filePath) throws FileNotFoundException, NumberFormatException, NoSuchElementException {
         File file = new File(filePath);
         Scanner sc = new Scanner(file);
 
@@ -34,9 +34,11 @@ public class GameLevel {
         }
 
         matrixSize = i;
+        if (matrixSize == 0) throw new NoSuchElementException();
 
         while (sc.hasNextLine()) {
             solutions.add(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+")));
         }
+        if (solutions.size() == 0) throw new NoSuchElementException();
     }
 }

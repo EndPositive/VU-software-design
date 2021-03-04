@@ -1,12 +1,11 @@
 package main.java;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import main.java.gamelogic.GameLevel;
 import main.java.gamelogic.GameState;
 import main.java.screens.GameScreen;
-
-import java.io.FileNotFoundException;
 
 public class BreachGame extends Game {
     private GameLevel gameLevel;
@@ -18,8 +17,9 @@ public class BreachGame extends Game {
             gameLevel = new GameLevel(filePath);
             gameState = new GameState(gameLevel);
             currentScreen = new GameScreen(this, gameState);
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
+            Gdx.app.exit();
         }
     }
 
