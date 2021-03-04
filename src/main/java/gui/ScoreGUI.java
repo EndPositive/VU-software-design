@@ -19,7 +19,7 @@ public class ScoreGUI extends GUIElement {
         font.draw(batch, "Your score is: ", x, y - 30);
 
         font.setColor(Color.GOLD);
-        font.draw(batch, String.valueOf(score), x + 10, y - 60);
+        font.draw(batch, String.valueOf(score), x, y - 60);
 
         batch.end();
     }
