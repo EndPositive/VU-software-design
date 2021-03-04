@@ -14,6 +14,11 @@ public class Main {
         config.height = 350;
         config.title = "Breach Protocol";
         config.resizable = false;
-        new LwjglApplication(new BreachGame(arg[0]), config);
+        try {
+            new LwjglApplication(new BreachGame(arg[0]), config);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            System.exit(-1);
+        }
     }
 }
