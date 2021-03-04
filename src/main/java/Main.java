@@ -13,11 +13,7 @@ public class Main {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.height = 350;
         config.title = "Breach Protocol";
-        try {
-            new LwjglApplication(new BreachGame(arg[0]), config);
-        } catch (Exception e) {
-            System.err.println(e.toString());
-            System.exit(-1);
-        }
+        config.resizable = false;
+        new LwjglApplication(new BreachGame(arg[0]), config);
     }
 }
