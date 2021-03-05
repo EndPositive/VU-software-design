@@ -69,6 +69,9 @@ public class GameScreen extends ScreenAdapter {
         bufferGUI.render(gameState);
         timerGUI.render(gameState);
 
-        if (gameState.timerLogic.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
+        if (gameState.timerLogic.timeLeft() == 0) {
+            gameState.setScore();
+            game.setScreen(new GameOverScreen(game, gameState));
+        }
     }
 }
