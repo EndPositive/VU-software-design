@@ -9,12 +9,12 @@ import java.util.Stack;
 public class GameState {
     public Cell selector;
     public final GameLevel gameLevel;
+    public final TimerLogic timerLogic;
     public final Stack<Cell> buffer = new Stack<>();
     private final Stack<Cell> undoStack = new Stack<>();
 
     private static final int maxOffset = 2;
-    private int offsetBufferSize = 0;
-    public final TimerLogic timerLogic;
+    private int offsetBufferLength = 0;
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
@@ -36,18 +36,18 @@ public class GameState {
         }
     }
 
-    public int getCurrentBufferSize() {
-        return gameLevel.bufferLength + offsetBufferSize;
+    public int getCurrentBufferLength() {
+        return gameLevel.bufferLength + offsetBufferLength;
     }
 
     public void increaseBufferLength() {
-        if (offsetBufferSize < maxOffset && !timerLogic.hasStarted())
-            offsetBufferSize++;
+        if (offsetBufferLength < maxOffset && !timerLogic.hasStarted())
+            offsetBufferLength++;
     }
 
     public void decreaseBufferLength() {
-        if (offsetBufferSize > -maxOffset && !timerLogic.hasStarted())
-            offsetBufferSize--;
+        if (offsetBufferLength > -maxOffset && !timerLogic.hasStarted())
+            offsetBufferLength--;
     }
 
     public void move(Direction dir) {
