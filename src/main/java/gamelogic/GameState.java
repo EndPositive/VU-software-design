@@ -87,7 +87,7 @@ public class GameState {
             factorial = factorial * i;
         }
         finalScore = Math.round(factorial * (timerLogic.timeLeft() + 1) * numOfCompletedSeqs *
-                gameLevel.bufferLength * (gameLevel.bufferLength - buffer.size() + 1));
+                gameLevel.bufferLength * (gameLevel.bufferLength - offsetBufferLength * 2)) / 10;
     }
 
     public int getScore() {

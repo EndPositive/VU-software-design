@@ -45,7 +45,6 @@ public class GameScreen extends ScreenAdapter {
                     gameState.setScore();
                     game.setScreen(new GameOverScreen(game, gameState));
                 }
-                if (keycode == Keys.E) game.setScreen(new EasterEggScreen());
                 if (keycode == Keys.UP) gameState.move(Direction.UP);
                 if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);
                 if (keycode == Keys.LEFT) gameState.move(Direction.LEFT);
