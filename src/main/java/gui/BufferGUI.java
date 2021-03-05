@@ -11,7 +11,7 @@ public class BufferGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
-        for (int i = 0; i < gameState.gameLevel.bufferLength; i++) {
+        for (int i = 0; i < gameState.getCurrentBufferSize(); i++) {
             font.draw(batch, "__", x + i * 25, y - 2);
 
             if (gameState.buffer.size() > i) {

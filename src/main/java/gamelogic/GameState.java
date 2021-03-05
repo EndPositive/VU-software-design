@@ -11,6 +11,9 @@ public class GameState {
     public final GameLevel gameLevel;
     public final Stack<Cell> buffer = new Stack<>();
     private final Stack<Cell> undoStack = new Stack<>();
+
+    private static final int maxOffset = 2;
+    private int offsetBufferSize = 0;
     public final TimerLogic timerLogic;
 
     public GameState(GameLevel gameLevel) {
@@ -31,6 +34,20 @@ public class GameState {
             buffer.push(undoStack.pop());
             selector = buffer.peek();
         }
+    }
+
+    public int getCurrentBufferSize() {
+        return gameLevel.bufferLength + offsetBufferSize;
+    }
+
+    public void increaseBufferLength() {
+        if (offsetBufferSize < maxOffset && !timerLogic.hasStarted())
+            offsetBufferSize++;
+    }
+
+    public void decreaseBufferLength() {
+        if (offsetBufferSize > -maxOffset && !timerLogic.hasStarted())
+            offsetBufferSize--;
     }
 
     public void move(Direction dir) {

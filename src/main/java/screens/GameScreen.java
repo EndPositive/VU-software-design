@@ -47,6 +47,8 @@ public class GameScreen extends ScreenAdapter {
                 if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);
                 if (keycode == Keys.LEFT) gameState.move(Direction.LEFT);
                 if (keycode == Keys.RIGHT) gameState.move(Direction.RIGHT);
+                if (keycode == Keys.MINUS) gameState.decreaseBufferLength();
+                if (keycode == Keys.EQUALS) gameState.increaseBufferLength();
                 if (keycode == Keys.SPACE) gameState.confirmSelector();
                 if (keycode == Keys.BACKSPACE) gameState.undo();
                 if (keycode == Keys.R) gameState.redo();
