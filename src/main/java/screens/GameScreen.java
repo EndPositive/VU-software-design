@@ -28,7 +28,7 @@ public class GameScreen extends ScreenAdapter {
         gridGUI = new GridGUI(20, 300);
         sequenceGUI = new SequenceGUI(220, 300);
         bufferGUI = new BufferGUI(220, 330);
-        timerGUI = new TimerGUI(10, 20, 330);
+        timerGUI = new TimerGUI(gameState.timerLogic, 20, 330);
     }
 
     @Override
@@ -47,10 +47,7 @@ public class GameScreen extends ScreenAdapter {
                 if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);
                 if (keycode == Keys.LEFT) gameState.move(Direction.LEFT);
                 if (keycode == Keys.RIGHT) gameState.move(Direction.RIGHT);
-                if (keycode == Keys.SPACE) {
-                    if (!timerGUI.hasStarted()) timerGUI.start();
-                    gameState.confirmSelector();
-                }
+                if (keycode == Keys.SPACE) gameState.confirmSelector();
                 if (keycode == Keys.BACKSPACE) gameState.undo();
                 if (keycode == Keys.R) gameState.redo();
                 if (keycode == Keys.ESCAPE) Gdx.app.exit();
@@ -68,6 +65,6 @@ public class GameScreen extends ScreenAdapter {
         bufferGUI.render(gameState);
         timerGUI.render(gameState);
 
-        if (timerGUI.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
+        if (gameState.timerLogic.timeLeft() == 0) game.setScreen(new GameOverScreen(game, gameState));
     }
 }

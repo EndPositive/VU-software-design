@@ -11,10 +11,12 @@ public class GameState {
     public final GameLevel gameLevel;
     public final Stack<Cell> buffer = new Stack<>();
     private final Stack<Cell> undoStack = new Stack<>();
+    public final TimerLogic timerLogic;
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
         selector = new Cell(0, 0);
+        timerLogic = new TimerLogic(10);
     }
 
     public void undo() {
@@ -36,6 +38,7 @@ public class GameState {
     }
 
     public void confirmSelector() {
+        if (!timerLogic.hasStarted()) timerLogic.start();
         if (buffer.size() == gameLevel.bufferLength) return;
         undoStack.clear();
         buffer.push(selector);
