@@ -41,7 +41,10 @@ public class GameScreen extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
-                if (keycode == Keys.ENTER) game.setScreen(new GameOverScreen(game, gameState));
+                if (keycode == Keys.ENTER) {
+                    gameState.setScore();
+                    game.setScreen(new GameOverScreen(game, gameState));
+                }
                 if (keycode == Keys.E) game.setScreen(new EasterEggScreen());
                 if (keycode == Keys.UP) gameState.move(Direction.UP);
                 if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);

@@ -16,6 +16,8 @@ public class GameState {
     private static final int maxOffset = 2;
     private int offsetBufferLength = 0;
 
+    private int finalScore = 0;
+
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
         selector = new Cell(0, 0);
@@ -78,14 +80,18 @@ public class GameState {
         return false;
     }
 
-    public int getScore() {
+    public void setScore() {
         int numOfCompletedSeqs = (int) gameLevel.solutions.stream().filter(this::isSequenceCompleted).count();
         int factorial = 1;
         for (int i = 1; i <= numOfCompletedSeqs; i++) {
             factorial = factorial * i;
         }
-        return (int) Math.round(factorial * 30.0 * numOfCompletedSeqs * gameLevel.bufferLength *
-                (gameLevel.bufferLength - buffer.size() + 1) / 10.0);
+        finalScore = Math.round(factorial * timerLogic.timeLeft() * numOfCompletedSeqs *
+                gameLevel.bufferLength * (gameLevel.bufferLength - buffer.size() + 1));
+    }
+
+    public int getScore() {
+        return finalScore;
     }
 
     //TODO: Yingdi Assignment 3 implement isSequenceFailed to support highlighting failed sequences
