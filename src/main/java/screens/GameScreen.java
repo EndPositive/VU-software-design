@@ -6,10 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import main.java.gamelogic.GameState;
-import main.java.gui.BufferGUI;
-import main.java.gui.GridGUI;
-import main.java.gui.SequenceGUI;
-import main.java.gui.TimerGUI;
+import main.java.gui.*;
 import main.java.misc.Direction;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
@@ -21,6 +18,7 @@ public class GameScreen extends ScreenAdapter {
     final GameState gameState;
     final BufferGUI bufferGUI;
     final SequenceGUI sequenceGUI;
+    final TutorialGUI tutorialGUI;
 
     public GameScreen(Game game, GameState gameState) {
         this.game = game;
@@ -29,6 +27,7 @@ public class GameScreen extends ScreenAdapter {
         sequenceGUI = new SequenceGUI(220, 300);
         bufferGUI = new BufferGUI(220, 330);
         timerGUI = new TimerGUI(gameState.timerLogic, 20, 330);
+        tutorialGUI = new TutorialGUI(20, 120);
     }
 
     @Override
@@ -37,6 +36,7 @@ public class GameScreen extends ScreenAdapter {
         sequenceGUI.create();
         bufferGUI.create();
         timerGUI.create();
+        tutorialGUI.create();
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
@@ -68,6 +68,7 @@ public class GameScreen extends ScreenAdapter {
         sequenceGUI.render(gameState);
         bufferGUI.render(gameState);
         timerGUI.render(gameState);
+        tutorialGUI.render(gameState);
 
         if (gameState.timerLogic.timeLeft() == 0) {
             gameState.setScore();
