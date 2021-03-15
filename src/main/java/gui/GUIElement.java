@@ -5,22 +5,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import main.java.gamelogic.GameState;
 
 public abstract class GUIElement {
-    final float x;
-    final float y;
-    SpriteBatch batch;
-    BitmapFont font;
+    protected final float x;
+    protected final float y;
+    protected SpriteBatch batch;
+    protected BitmapFont font;
 
     public GUIElement(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public void create() {
+    public final void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
     }
 
-    public void render(GameState gameState) {
-
-    }
+    abstract public void render(GameState gameState);
 }
