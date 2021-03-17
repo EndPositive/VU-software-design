@@ -16,12 +16,12 @@ public class GameLevel {
         File file = new File(filePath);
         Scanner sc = new Scanner(file);
 
-        setBufferLength(sc);
+        setBufferLengthFromFile(sc);
         createMatrixFromFile(sc);
         createSolutionFromFile(sc);
     }
 
-    private void setBufferLength(Scanner sc) {
+    private void setBufferLengthFromFile(Scanner sc) {
         bufferLength = Integer.parseInt(sc.nextLine());
         sc.nextLine();
     }
