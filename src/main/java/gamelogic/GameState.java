@@ -82,10 +82,7 @@ public class GameState {
 
     public void setScore() {
         int numOfCompletedSeqs = (int) gameLevel.solutions.stream().filter(this::isSequenceCompleted).count();
-        int factorial = 1;
-        for (int i = 1; i <= numOfCompletedSeqs; i++) {
-            factorial = factorial * i;
-        }
+        int factorial = calculateFactorial(numOfCompletedSeqs);
 
         finalScore = Math.round(factorial * (timerLogic.timeLeft() + 1) * numOfCompletedSeqs *
                 gameLevel.bufferLength * (gameLevel.bufferLength - offsetBufferLength * 2)) / 10;
@@ -100,4 +97,11 @@ public class GameState {
         return false;
     }
 
+    private int calculateFactorial(int numOfCompletedSeqs) {
+        int factorial = 1;
+        for (int i = 1; i <= numOfCompletedSeqs; i++)
+            factorial = factorial * i;
+
+        return factorial;
+    }
 }
