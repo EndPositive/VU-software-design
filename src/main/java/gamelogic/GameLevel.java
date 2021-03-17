@@ -16,12 +16,12 @@ public class GameLevel {
         File file = new File(filePath);
         Scanner sc = new Scanner(file);
 
-        setBufferLength(sc);
+        setBufferLengthFromFile(sc);
         createMatrixFromFile(sc);
         createSolutionFromFile(sc);
     }
 
-    private void setBufferLength(Scanner sc) {
+    private void setBufferLengthFromFile(Scanner sc) {
         bufferLength = Integer.parseInt(sc.nextLine());
         sc.nextLine();
     }
@@ -30,15 +30,14 @@ public class GameLevel {
         int i = 0;
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
+            if (line.isEmpty()) break;
 
-            if (!line.isEmpty()) {
-                String[] splitLine = line.split("\\s+");
+            String[] splitLine = line.split("\\s+");
 
-                for (int j = 0; j < splitLine.length; j++)
-                    matrix.put(new Cell(j, i), splitLine[j].toUpperCase());
+            for (int j = 0; j < splitLine.length; j++)
+                matrix.put(new Cell(j, i), splitLine[j].toUpperCase());
 
-                i++;
-            } else break;
+            i++;
         }
 
         matrixSize = i;
