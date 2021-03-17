@@ -11,7 +11,7 @@ import main.java.misc.Direction;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 
-public class GameScreen extends ScreenAdapter {
+public class GameplayScreen extends ScreenAdapter {
     final Game game;
     final GridGUI gridGUI;
     final TimerGUI timerGUI;
@@ -20,7 +20,7 @@ public class GameScreen extends ScreenAdapter {
     final SequenceGUI sequenceGUI;
     final TutorialGUI tutorialGUI;
 
-    public GameScreen(Game game, GameState gameState) {
+    public GameplayScreen(Game game, GameState gameState) {
         this.game = game;
         this.gameState = gameState;
         gridGUI = new GridGUI(20, 300);

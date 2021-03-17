@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import main.java.gamelogic.GameLevel;
 import main.java.gamelogic.GameState;
-import main.java.screens.GameScreen;
+import main.java.screens.GameplayScreen;
 
 public class BreachGame extends Game {
     private final GameLevel gameLevel;
@@ -14,7 +14,7 @@ public class BreachGame extends Game {
     public BreachGame(String filePath) throws Exception {
         gameLevel = new GameLevel(filePath);
         gameState = new GameState(gameLevel);
-        currentScreen = new GameScreen(this, gameState);
+        currentScreen = new GameplayScreen(this, gameState);
     }
 
     @Override

@@ -11,6 +11,10 @@ public class TutorialGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
+        /*
+         * The spaces look ridiculous here because the kerning between the letters is weird in-game,
+         * so they are different in order to compensate
+         */
         font.draw(batch, "Spacebar      select a cell", x, y);
         font.draw(batch, "Enter             submit sequence", x, y - 20);
         font.draw(batch, "Backspace    delete most recent cell", x, y - 40);
