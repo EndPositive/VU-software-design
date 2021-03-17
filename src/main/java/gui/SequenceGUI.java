@@ -13,7 +13,6 @@ public class SequenceGUI extends GUIElement {
 
     @Override
     public void render(GameState gameState) {
-
         batch.begin();
 
         font.setColor(Color.BLUE);
@@ -21,6 +20,7 @@ public class SequenceGUI extends GUIElement {
 
         for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
             List<String> sequenceTemp = gameState.gameLevel.solutions.get(i);
+
             if (gameState.isSequenceCompleted(sequenceTemp)) {
                 font.setColor(Color.GREEN);
             } else if (gameState.isSequenceFailed(sequenceTemp)) {
@@ -28,7 +28,7 @@ public class SequenceGUI extends GUIElement {
             } else font.setColor(Color.WHITE);
 
             for (int j = 0; j < sequenceTemp.size(); j++) {
-                font.draw(batch, gameState.gameLevel.solutions.get(i).get(j), x + j * 30, y - i * 30 - 30);
+                font.draw(batch, sequenceTemp.get(j), x + j * 30, y - i * 30 - 30);
             }
         }
 
