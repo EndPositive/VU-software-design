@@ -13,7 +13,7 @@ public class GameState {
     public final Stack<Cell> buffer = new Stack<>();
     private final Stack<Cell> undoStack = new Stack<>();
 
-    private static final int maxOffset = 2;
+    private static final int MAX_OFFSET = 2;
     private int offsetBufferLength = 0;
 
     private int finalScore = 0;
@@ -43,12 +43,12 @@ public class GameState {
     }
 
     public void increaseBufferLength() {
-        if (offsetBufferLength < maxOffset && !timerLogic.hasStarted())
+        if (offsetBufferLength < MAX_OFFSET && !timerLogic.hasStarted())
             offsetBufferLength++;
     }
 
     public void decreaseBufferLength() {
-        if (offsetBufferLength > -maxOffset && !timerLogic.hasStarted())
+        if (offsetBufferLength > -MAX_OFFSET && !timerLogic.hasStarted())
             offsetBufferLength--;
     }
 

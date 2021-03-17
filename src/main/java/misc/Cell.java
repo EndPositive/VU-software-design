@@ -24,12 +24,12 @@ public class Cell {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return x * 10000 + y;
     }
 
     @Override
-    public boolean equals(Object givenCell) {
+    public final boolean equals(Object givenCell) {
         if (!(givenCell instanceof Cell)) return false;
 
         Cell cell = (Cell) givenCell;

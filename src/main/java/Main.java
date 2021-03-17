@@ -4,8 +4,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 public class Main {
-	public static void main (String[] arg) {
-        if (arg.length < 1) {
+    public static void main(String[] args) {
+        if (args.length < 1) {
             System.err.println("No input file given");
             System.exit(-1);
         }
@@ -15,7 +15,7 @@ public class Main {
         config.title = "Breach Protocol";
         config.resizable = false;
         try {
-            new LwjglApplication(new BreachGame(arg[0]), config);
+            new LwjglApplication(new BreachGame(args[0]), config);
         } catch (Exception e) {
             System.err.println(e.toString());
             System.exit(-1);
