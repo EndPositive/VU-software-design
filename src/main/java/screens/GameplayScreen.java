@@ -41,20 +41,45 @@ public class GameplayScreen extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
-                if (keycode == Keys.ENTER) {
-                    gameState.setScore();
-                    game.setScreen(new GameOverScreen(game, gameState));
+                switch (keycode) {
+                    case Keys.ENTER:
+                        gameState.setScore();
+                        game.setScreen(new GameOverScreen(game, gameState));
+                        break;
+                    case Keys.UP:
+                        gameState.move(Direction.UP);
+                        break;
+                    case Keys.DOWN:
+                        gameState.move(Direction.DOWN);
+                        break;
+                    case Keys.LEFT:
+                        gameState.move(Direction.LEFT);
+                        break;
+                    case Keys.RIGHT:
+                        gameState.move(Direction.RIGHT);
+                        break;
+                    case Keys.MINUS:
+                        gameState.decreaseBufferLength();
+                        break;
+                    case Keys.EQUALS:
+                        gameState.increaseBufferLength();
+                        break;
+                    case Keys.SPACE:
+                        gameState.confirmSelector();
+                        break;
+                    case Keys.BACKSPACE:
+                        gameState.undo();
+                        break;
+                    case Keys.R:
+                        gameState.redo();
+                        break;
+                    case Keys.ESCAPE:
+                        Gdx.app.exit();
+                        break;
+                    default:
+                        return true;
                 }
-                if (keycode == Keys.UP) gameState.move(Direction.UP);
-                if (keycode == Keys.DOWN) gameState.move(Direction.DOWN);
-                if (keycode == Keys.LEFT) gameState.move(Direction.LEFT);
-                if (keycode == Keys.RIGHT) gameState.move(Direction.RIGHT);
-                if (keycode == Keys.MINUS) gameState.decreaseBufferLength();
-                if (keycode == Keys.EQUALS) gameState.increaseBufferLength();
-                if (keycode == Keys.SPACE) gameState.confirmSelector();
-                if (keycode == Keys.BACKSPACE) gameState.undo();
-                if (keycode == Keys.R) gameState.redo();
-                if (keycode == Keys.ESCAPE) Gdx.app.exit();
+
                 return true;
             }
         });
