@@ -48,24 +48,4 @@ public class GameState {
         if (offsetBufferLength > -MAX_OFFSET && !timerLogic.hasStarted())
             offsetBufferLength--;
     }
-
-    public void move(Direction dir) {
-        if (isValidMove(dir)) selector = selector.applyDir(dir);
-    }
-
-    public void confirmSelector() {
-        if (!timerLogic.hasStarted()) timerLogic.start();
-        if (buffer.size() == gameLevel.bufferLength) return;
-        undoStack.clear();
-        buffer.push(selector);
-    }
-
-    private boolean isValidMove(Direction dir) {
-        Cell nextCell = selector.applyDir(dir);
-        return nextCell.x < gameLevel.matrixSize &&
-                nextCell.y < gameLevel.matrixSize &&
-                nextCell.x >= 0 &&
-                nextCell.y >= 0 &&
-                (buffer.size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
-    }
 }
