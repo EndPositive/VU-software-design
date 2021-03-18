@@ -13,7 +13,7 @@ public class GameState {
     public final Stack<Command> commandStack = new Stack<>();
     public final Stack<Command> undoCommandStack = new Stack<>();
 
-    private static final int MAX_OFFSET = 2;
+    public static final int MAX_OFFSET = 2;
     public int offsetBufferLength = 0;
 
     public GameState(GameLevel gameLevel) {
@@ -36,13 +36,4 @@ public class GameState {
         return gameLevel.bufferLength + offsetBufferLength;
     }
 
-    public void increaseBufferLength() {
-        if (offsetBufferLength < MAX_OFFSET && !timerLogic.hasStarted())
-            offsetBufferLength++;
-    }
-
-    public void decreaseBufferLength() {
-        if (offsetBufferLength > -MAX_OFFSET && !timerLogic.hasStarted())
-            offsetBufferLength--;
-    }
 }

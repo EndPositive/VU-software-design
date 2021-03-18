@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
+import main.java.commands.DecreaseBufferLength;
+import main.java.commands.IncreaseBufferLength;
 import main.java.commands.Move;
 import main.java.commands.Select;
 import main.java.gamelogic.GameLevel;
@@ -59,10 +61,10 @@ public class GameplayScreen extends ScreenAdapter {
                         new Move(Direction.RIGHT).tryExecute(gameState);
                         break;
                     case Keys.MINUS:
-                        gameState.decreaseBufferLength();
+                        new DecreaseBufferLength().tryExecute(gameState);
                         break;
                     case Keys.EQUALS:
-                        gameState.increaseBufferLength();
+                        new IncreaseBufferLength().tryExecute(gameState);
                         break;
                     case Keys.SPACE:
                         new Select().tryExecute(gameState);
