@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
+import main.java.commands.Move;
+import main.java.commands.Select;
 import main.java.gamelogic.GameLevel;
 import main.java.gamelogic.GameState;
 import main.java.gui.*;
@@ -45,16 +47,16 @@ public class GameplayScreen extends ScreenAdapter {
                         game.setScreen(new GameOverScreen(game, gameState));
                         break;
                     case Keys.UP:
-                        gameState.move(Direction.UP);
+                        new Move(Direction.UP).tryExecute(gameState);
                         break;
                     case Keys.DOWN:
-                        gameState.move(Direction.DOWN);
+                        new Move(Direction.DOWN).tryExecute(gameState);
                         break;
                     case Keys.LEFT:
-                        gameState.move(Direction.LEFT);
+                        new Move(Direction.LEFT).tryExecute(gameState);
                         break;
                     case Keys.RIGHT:
-                        gameState.move(Direction.RIGHT);
+                        new Move(Direction.RIGHT).tryExecute(gameState);
                         break;
                     case Keys.MINUS:
                         gameState.decreaseBufferLength();
@@ -63,13 +65,13 @@ public class GameplayScreen extends ScreenAdapter {
                         gameState.increaseBufferLength();
                         break;
                     case Keys.SPACE:
-                        gameState.confirmSelector();
+                        new Select().tryExecute(gameState);
                         break;
                     case Keys.BACKSPACE:
-                        gameState.undo();
+                        gameState.tryUndo();
                         break;
                     case Keys.R:
-                        gameState.redo();
+                        gameState.tryRedo();
                         break;
                     case Keys.ESCAPE:
                         Gdx.app.exit();

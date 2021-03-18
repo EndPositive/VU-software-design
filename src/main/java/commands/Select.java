@@ -4,29 +4,23 @@ import main.java.gamelogic.GameState;
 import main.java.misc.Cell;
 
 public class Select extends Command {
-    private Select prev;
-    private Select next;
-    private Cell selected;
+    private Cell lastSelector;
 
-    public Move() {
+    public Select() {
+        super(true);
     }
 
     protected boolean execute(GameState gameState) {
-        if (selected != null) {
-            gameState.selector = selected;
-            return true;
-        }
-
         if (!gameState.timerLogic.hasStarted()) gameState.timerLogic.start();
         if (gameState.buffer.size() == gameState.gameLevel.bufferLength) return false;
 
-        selected = gameState.selector;
         gameState.buffer.push(gameState.selector);
-        selected = gam
+        lastSelector = gameState.selector;
         return true;
     }
 
     protected void undo(GameState gameState) {
-
+        gameState.buffer.pop();
+        gameState.selector = lastSelector;
     }
 }

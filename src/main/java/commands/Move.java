@@ -8,6 +8,7 @@ public class Move extends Command {
     private final Direction dir;
 
     public Move(Direction direction) {
+        super(false);
         dir = direction;
     }
 

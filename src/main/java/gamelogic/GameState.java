@@ -1,7 +1,7 @@
 package main.java.gamelogic;
 
+import main.java.commands.Command;
 import main.java.misc.Cell;
-import main.java.misc.Direction;
 
 import java.util.Stack;
 
@@ -10,7 +10,8 @@ public class GameState {
     public final GameLevel gameLevel;
     public final TimerLogic timerLogic;
     public final Stack<Cell> buffer = new Stack<>();
-    private final Stack<Cell> undoStack = new Stack<>();
+    public final Stack<Command> commandStack = new Stack<>();
+    public final Stack<Command> undoCommandStack = new Stack<>();
 
     private static final int MAX_OFFSET = 2;
     public int offsetBufferLength = 0;
@@ -21,18 +22,14 @@ public class GameState {
         timerLogic = new TimerLogic(10);
     }
 
-    public void undo() {
-        if (!buffer.isEmpty()) {
-            undoStack.push(buffer.pop());
-            selector = undoStack.peek();
-        }
+    public void tryUndo() {
+        if (commandStack.isEmpty()) return;
+        commandStack.pop().tryUndo(this);
     }
 
-    public void redo() {
-        if (!undoStack.isEmpty()) {
-            buffer.push(undoStack.pop());
-            selector = buffer.peek();
-        }
+    public void tryRedo() {
+        if (undoCommandStack.isEmpty()) return;
+        undoCommandStack.pop().tryExecute(this);
     }
 
     public int getCurrentBufferLength() {
