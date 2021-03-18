@@ -3,8 +3,10 @@ package main.java.gamelogic;
 import main.java.misc.Cell;
 import main.java.misc.Direction;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class GameState {
     public Cell selector;
@@ -92,8 +94,21 @@ public class GameState {
         return finalScore;
     }
 
-    //TODO: Yingdi Assignment 3 implement isSequenceFailed to support highlighting failed sequences
     public boolean isSequenceFailed(List<String> seq) {
+        if (!buffer.isEmpty()) {
+            List<String> bufferString = buffer.stream().map(gameLevel.matrix::get).collect(Collectors.toList());
+            String headOfSeq = seq.get(0);
+            int matchIndex = bufferString.indexOf(headOfSeq);
+            int bufferSize = buffer.size();
+            int incrementOfIndex;
+            while (matchIndex >= 0 &&
+                    Collections.indexOfSubList(seq, bufferString.subList(matchIndex, bufferSize)) < 0) {
+                incrementOfIndex = bufferString.subList(matchIndex + 1, bufferSize).indexOf(headOfSeq);
+                matchIndex = incrementOfIndex < 0 ? -1 : (matchIndex + incrementOfIndex + 1);
+            }
+            if (matchIndex < 0) return buffer.size() + seq.size() > getCurrentBufferLength();
+            return matchIndex + seq.size() > getCurrentBufferLength();
+        }
         return false;
     }
 
