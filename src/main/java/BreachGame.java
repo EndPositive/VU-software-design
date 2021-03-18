@@ -3,7 +3,6 @@ package main.java;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import main.java.gamelogic.GameLevel;
-import main.java.gamelogic.GameState;
 import main.java.screens.GameplayScreen;
 
 import java.io.IOException;

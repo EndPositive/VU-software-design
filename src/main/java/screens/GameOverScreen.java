@@ -3,6 +3,7 @@ package main.java.screens;
 import com.badlogic.gdx.*;
 import main.java.gamelogic.GameState;
 import main.java.gui.BufferGUI;
+import main.java.gui.GUIElement;
 import main.java.gui.ScoreGUI;
 import main.java.gui.SequenceGUI;
 
@@ -41,9 +42,6 @@ public class GameOverScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
-
-        scoreGUI.render(gameState);
-        bufferGUI.render(gameState);
-        sequenceGUI.render(gameState);
+        guiElements.forEach(el -> el.render(gameState));
     }
 }

@@ -27,9 +27,8 @@ public class SequenceGUI extends GUIElement {
                 font.setColor(Color.RED);
             } else font.setColor(Color.WHITE);
 
-            for (int j = 0; j < sequenceTemp.size(); j++) {
-                font.draw(batch, sequenceTemp.get(j), x + j * 30, y - i * 30 - 30);
-            }
+            // TODO: reformat numbers below
+            font.draw(batch, sequenceTemp.toString() + "\n", x, y - i * 30 - 30);
         }
 
         batch.end();

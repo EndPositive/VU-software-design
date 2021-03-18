@@ -9,16 +9,15 @@ import main.java.gamelogic.GameState;
 import main.java.gui.*;
 import main.java.misc.Direction;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 
 public class GameplayScreen extends ScreenAdapter {
-    final Game game;
-    final GridGUI gridGUI;
-    final TimerGUI timerGUI;
-    final GameState gameState;
-    final BufferGUI bufferGUI;
-    final SequenceGUI sequenceGUI;
-    final TutorialGUI tutorialGUI;
+    private final Game game;
+    private final GameState gameState;
+    private final List<GUIElement> guiElements;
 
     public GameplayScreen(Game game, GameState gameState) {
         this.game = game;
@@ -88,15 +87,9 @@ public class GameplayScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
-
-        gridGUI.render(gameState);
-        sequenceGUI.render(gameState);
-        bufferGUI.render(gameState);
-        timerGUI.render(gameState);
-        tutorialGUI.render(gameState);
+        guiElements.forEach(el -> el.render(gameState));
 
         if (gameState.timerLogic.timeLeft() == 0) {
-            gameState.setScore();
             game.setScreen(new GameOverScreen(game, gameState));
         }
     }
