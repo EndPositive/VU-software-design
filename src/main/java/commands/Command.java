@@ -15,7 +15,7 @@ abstract public class Command {
         if (executed) return;
         executed = execute(gameState);
 
-        if (allowUndoRedo) gameState.commandStack.push(this);
+        if (executed && allowUndoRedo) gameState.commandStack.push(this);
     }
 
     abstract protected boolean execute(GameState gameState);
