@@ -2,9 +2,7 @@ package main.java.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
-
-import java.util.List;
-
+import main.java.gamelogic.Sequence;
 
 public class SequenceGUI extends GUIElement {
     public SequenceGUI(float x, float y) {
@@ -19,17 +17,16 @@ public class SequenceGUI extends GUIElement {
         font.draw(batch, "Sequences to complete: ", x, y);
 
         for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
-            List<String> sequenceTemp = gameState.gameLevel.solutions.get(i);
+            Sequence sequenceTemp = gameState.gameLevel.solutions.get(i);
 
-            if (gameState.isSequenceCompleted(sequenceTemp)) {
+            if (sequenceTemp.isSequenceCompleted(gameState)) {
                 font.setColor(Color.GREEN);
-            } else if (gameState.isSequenceFailed(sequenceTemp)) {
+            } else if (sequenceTemp.isSequenceFailed(gameState)) {
                 font.setColor(Color.RED);
             } else font.setColor(Color.WHITE);
 
-            for (int j = 0; j < sequenceTemp.size(); j++) {
-                font.draw(batch, sequenceTemp.get(j), x + j * 30, y - i * 30 - 30);
-            }
+            // TODO: reformat numbers below
+            font.draw(batch, sequenceTemp.toString() + "\n", x, y - i * 30 - 30);
         }
 
         batch.end();

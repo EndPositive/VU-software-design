@@ -2,6 +2,7 @@ package main.java.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
+import main.java.gamelogic.ScoreLogic;
 
 public class ScoreGUI extends GUIElement {
     public ScoreGUI(float x, float y) {
@@ -10,7 +11,7 @@ public class ScoreGUI extends GUIElement {
 
     @Override
     public void render(GameState gameState) {
-        int score = gameState.getScore();
+        int score = ScoreLogic.calculateScore(gameState);
 
         batch.begin();
 
