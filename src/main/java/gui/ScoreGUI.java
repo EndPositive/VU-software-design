@@ -16,10 +16,14 @@ public class ScoreGUI extends GUIElement {
 
         font.setColor(Color.PINK);
         font.draw(batch, score != 0 ? "You breached the protocol!" : "Sometimes in life you fail and sometimes you don't succeed :(", x, y);
-        font.draw(batch, "Your score is: ", x, y - 30);
+        font.draw(batch, "Your score is: ", x, y - padding);
 
         font.setColor(Color.GOLD);
-        font.draw(batch, String.valueOf(score), x, y - 60);
+        font.draw(batch, String.valueOf(score), x, y - padding * 2);
+
+        /*
+        TODO: SHOULD WE USE PADDING * 2 OR MAKE A NEW VARIABLE FOR THIS?
+         */
 
         batch.end();
     }

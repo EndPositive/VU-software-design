@@ -17,24 +17,24 @@ public class GridGUI extends GUIElement {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GRAY);
         if (gameState.buffer.size() % 2 == 0) {
-            shapeRenderer.rect(x, y - gameState.selector.y * 30 - 15,
-                    gameState.gameLevel.matrixSize * 30 - 10, 15);
+            shapeRenderer.rect(x, y - gameState.selector.y * padding - gridPaddingOffset,
+                    gameState.gameLevel.matrixSize * padding - gridCoordinateOffset, gridPaddingOffset);
         } else {
-            shapeRenderer.rect(x + gameState.selector.x * 30, y - (gameState.gameLevel.matrixSize - 1) * 30 - 15,
-                    15, gameState.gameLevel.matrixSize * 30 - 10);
+            shapeRenderer.rect(x + gameState.selector.x * padding, y - (gameState.gameLevel.matrixSize - 1) * padding - gridPaddingOffset,
+                    gridPaddingOffset, gameState.gameLevel.matrixSize * padding - gridCoordinateOffset);
         }
         shapeRenderer.end();
 
         //Render the cell selector
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.rect(x + gameState.selector.x * 30, y - gameState.selector.y * 30 - 15, 20, 20);
+        shapeRenderer.rect(x + gameState.selector.x * padding, y - gameState.selector.y * padding - gridPaddingOffset, gridSelectorSize, gridSelectorSize);
         shapeRenderer.end();
 
         batch.begin();
 
         //Render the matrix
-        gameState.gameLevel.matrix.forEach((key, value) -> font.draw(batch, value, x + key.x * 30, y - key.y * 30));
+        gameState.gameLevel.matrix.forEach((key, value) -> font.draw(batch, value, x + key.x * padding, y - key.y * padding));
 
         batch.end();
     }

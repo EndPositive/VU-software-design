@@ -28,7 +28,7 @@ public class SequenceGUI extends GUIElement {
             } else font.setColor(Color.WHITE);
 
             for (int j = 0; j < sequenceTemp.size(); j++) {
-                font.draw(batch, sequenceTemp.get(j), x + j * 30, y - i * 30 - 30);
+                font.draw(batch, sequenceTemp.get(j), x + j * padding, y - i * padding - padding);
             }
         }
 

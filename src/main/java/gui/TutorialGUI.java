@@ -13,14 +13,16 @@ public class TutorialGUI extends GUIElement {
 
         /*
          * The spaces look ridiculous here because the kerning between the letters is weird in-game,
-         * so they are different in order to compensate
+         * so they are different here in order to compensate
          */
-        font.draw(batch, "Spacebar      select a cell", x, y);
-        font.draw(batch, "Enter             submit sequence", x, y - 20);
-        font.draw(batch, "Backspace    delete most recent cell", x, y - 40);
-        font.draw(batch, "r                    redo most recently deleted cell", x, y - 60);
-        font.draw(batch, "=                   increase buffer length (only at the start of a game)", x, y - 80);
-        font.draw(batch, "-                    decrease buffer length (only at the start of a game)", x, y - 100);
+        font.draw(batch,
+                "Spacebar        select a cell\n" +
+                        "Enter               submit sequence\n" +
+                        "Backspace      delete most recent cell\n" +
+                        "r                      redo most recently deleted cell\n" +
+                        "=                     increase buffer length (only at the start of a game)\n" +
+                        "-                      decrease buffer length (only at the start of a game)",
+                x, y);
 
         batch.end();
     }
