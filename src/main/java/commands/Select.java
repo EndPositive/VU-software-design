@@ -12,7 +12,7 @@ public class Select extends Command {
 
     protected boolean execute(GameState gameState) {
         if (!gameState.timerLogic.hasStarted()) gameState.timerLogic.start();
-        if (gameState.buffer.size() == gameState.gameLevel.bufferLength) return false;
+        if (gameState.buffer.size() == gameState.getCurrentBufferLength()) return false;
 
         gameState.buffer.push(gameState.selector);
         lastSelector = gameState.selector;
