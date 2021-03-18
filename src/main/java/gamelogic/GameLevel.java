@@ -9,7 +9,7 @@ import java.util.*;
 public class GameLevel {
     public int matrixSize;
     public int bufferLength;
-    public final List<List<String>> solutions = new ArrayList<>();
+    public final List<Sequence> solutions = new ArrayList<>();
     public final Map<Cell, String> matrix = new HashMap<>();
 
     public GameLevel(String filePath) throws FileNotFoundException, NumberFormatException, NoSuchElementException {
@@ -46,7 +46,8 @@ public class GameLevel {
 
     private void createSolutionFromFile(Scanner sc) {
         while (sc.hasNextLine())
-            solutions.add(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+")));
+            // this line reads a line from the file and parses it
+            solutions.add(new Sequence(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+"))));
 
         if (solutions.size() == 0) throw new NoSuchElementException();
     }
