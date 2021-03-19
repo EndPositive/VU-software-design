@@ -6,19 +6,12 @@ import static main.java.gamelogic.GameState.MAX_OFFSET;
 
 public class IncreaseBufferLength extends Command {
 
-    public IncreaseBufferLength() {
-        super(false);
-    }
-
     protected boolean execute(GameState gameState) {
         if (gameState.offsetBufferLength < MAX_OFFSET && !gameState.timerLogic.hasStarted()) {
             gameState.offsetBufferLength++;
             return true;
         }
         return false;
-    }
-
-    protected void undo(GameState gameState) {
     }
 
 }

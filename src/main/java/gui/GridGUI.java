@@ -16,7 +16,7 @@ public class GridGUI extends GUIElement {
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GRAY);
-        if (gameState.buffer.size() % 2 == 0) {
+        if (gameState.getBuffer().size() % 2 == 0) {
             shapeRenderer.rect(x, y - gameState.selector.y * 30 - 15,
                     gameState.gameLevel.matrixSize * 30 - 10, 15);
         } else {

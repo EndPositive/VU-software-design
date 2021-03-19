@@ -16,7 +16,6 @@ public class Select extends UndoableCommand {
     }
 
     protected void undo(GameState gameState) {
-        gameState.buffer.pop();
-        gameState.selector = lastSelector;
+        gameState.selector = selected;
     }
 }

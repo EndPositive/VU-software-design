@@ -12,9 +12,8 @@ public class GameState {
     public Cell selector;
     public final GameLevel gameLevel;
     public final TimerLogic timerLogic;
-    public final Stack<Cell> buffer = new Stack<>();
-    public final Stack<Command> commandStack = new Stack<>();
-    public final Stack<Command> undoCommandStack = new Stack<>();
+    public final Stack<UndoableCommand> commandStack = new Stack<>();
+    public final Stack<UndoableCommand> redoCommandStack = new Stack<>();
 
     public static final int MAX_OFFSET = 2;
     public int offsetBufferLength = 0;
@@ -33,6 +32,13 @@ public class GameState {
     public void tryRedo() {
         if (redoCommandStack.isEmpty()) return;
         redoCommandStack.pop().tryExecute(this);
+    }
+
+    public List<Cell> getBuffer() {
+        return commandStack.stream()
+                .filter(el -> el instanceof Select)
+                .map(el -> ((Select) el).selected)
+                .collect(Collectors.toList());
     }
 
     public int getCurrentBufferLength() {
