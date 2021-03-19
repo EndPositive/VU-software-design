@@ -2,7 +2,7 @@ package main.java.commands;
 
 import main.java.gamelogic.GameState;
 
-import static main.java.gamelogic.GameState.MAX_OFFSET;
+import static main.java.gamelogic.BufferLogic.MAX_OFFSET;
 
 public class IncreaseBufferLength extends Command {
 
@@ -11,6 +11,7 @@ public class IncreaseBufferLength extends Command {
             gameState.offsetBufferLength++;
             return true;
         }
+
         return false;
     }
 

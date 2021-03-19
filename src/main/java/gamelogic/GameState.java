@@ -34,15 +34,11 @@ public class GameState {
         redoCommandStack.pop().tryExecute(this);
     }
 
-    public List<Cell> getBuffer() {
+    public List<Select> getSelectCommands() {
         return commandStack.stream()
                 .filter(el -> el instanceof Select)
-                .map(el -> ((Select) el).selected)
+                .map(el -> ((Select) el))
                 .collect(Collectors.toList());
-    }
-
-    public int getCurrentBufferLength() {
-        return gameLevel.bufferLength + offsetBufferLength;
     }
 
 }

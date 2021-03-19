@@ -1,5 +1,6 @@
 package main.java.commands;
 
+import main.java.gamelogic.BufferLogic;
 import main.java.gamelogic.GameState;
 import main.java.misc.Cell;
 
@@ -8,7 +9,7 @@ public class Select extends UndoableCommand {
 
     protected boolean execute(GameState gameState) {
         if (!gameState.timerLogic.hasStarted()) gameState.timerLogic.start();
-        if (gameState.getBuffer().size() == gameState.getCurrentBufferLength()) return false;
+        if (BufferLogic.getBuffer(gameState).size() == BufferLogic.getMaxBufferLength(gameState)) return false;
 
         if (selected != null) gameState.selector = selected;
         selected = gameState.selector;
