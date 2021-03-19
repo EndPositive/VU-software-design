@@ -1,5 +1,7 @@
-package main.java.gamelogic;
+package main.java.misc;
 
+import main.java.gamelogic.BufferLogic;
+import main.java.gamelogic.GameState;
 
 import java.util.Collections;
 import java.util.List;

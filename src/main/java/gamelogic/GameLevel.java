@@ -1,6 +1,7 @@
 package main.java.gamelogic;
 
 import main.java.misc.Cell;
+import main.java.misc.Sequence;
 
 import java.io.File;
 import java.io.FileNotFoundException;
