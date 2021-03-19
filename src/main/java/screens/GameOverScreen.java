@@ -13,8 +13,8 @@ import java.util.List;
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
 
 public class GameOverScreen extends ScreenAdapter {
-    final Game game;
-    final GameState gameState;
+    private final Game game;
+    private final GameState gameState;
     private final List<GUIElement> guiElements;
 
     public GameOverScreen(Game game, GameState gameState) {
