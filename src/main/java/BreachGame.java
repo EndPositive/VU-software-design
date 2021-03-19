@@ -3,24 +3,20 @@ package main.java;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import main.java.gamelogic.GameLevel;
-import main.java.gamelogic.GameState;
 import main.java.screens.GameplayScreen;
 
 import java.io.IOException;
 
 public class BreachGame extends Game {
-    private final GameLevel gameLevel;
-    private final GameState gameState;
-    private final Screen currentScreen;
+    private final Screen startScreen;
 
     public BreachGame(String filePath) throws IOException {
-        gameLevel = new GameLevel(filePath);
-        gameState = new GameState(gameLevel);
-        currentScreen = new GameplayScreen(this, gameState);
+        GameLevel gameLevel = new GameLevel(filePath);
+        startScreen = new GameplayScreen(this, gameLevel);
     }
 
     @Override
     public void create() {
-        setScreen(currentScreen);
+        setScreen(startScreen);
     }
 }

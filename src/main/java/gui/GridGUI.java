@@ -2,6 +2,7 @@ package main.java.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import main.java.gamelogic.BufferLogic;
 import main.java.gamelogic.GameState;
 
 public class GridGUI extends GUIElement {
@@ -16,7 +17,7 @@ public class GridGUI extends GUIElement {
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GRAY);
-        if (gameState.buffer.size() % 2 == 0) {
+        if (BufferLogic.getBuffer(gameState).size() % 2 == 0) {
             shapeRenderer.rect(x, y - gameState.selector.y * padding - gridPaddingOffset,
                     gameState.gameLevel.matrixSize * padding - gridCoordinateOffset, gridPaddingOffset);
         } else {
