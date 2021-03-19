@@ -18,10 +18,27 @@ public class Sequence {
         return String.join("  ", seq);
     }
 
+    public boolean isSequenceCompleted(GameState gameState) {
+        if (BufferLogic.getBuffer(gameState).isEmpty()) return false;
+
+        String bufferString = BufferLogic.getBuffer(gameState).stream()
+                .map(cl -> gameState.gameLevel.matrix.get(cl) + " ")
+                .reduce("", String::concat);
+        return bufferString.contains(String.join(" ", seq));
+    }
+
     public boolean isSequenceFailed(GameState gameState) {
         if (BufferLogic.getBuffer(gameState).isEmpty()) return false;
 
-        // TODO: MAKE FUNCTION
+        int checkFailedSeq = checkFailedSeq(gameState);
+
+        //TODO: This is very confusing. Add some comments and maybe rename `checkFailedSeq`
+        if (checkFailedSeq < 0)
+            return BufferLogic.getBuffer(gameState).size() + seq.size() > BufferLogic.getMaxBufferLength(gameState);
+        return checkFailedSeq + seq.size() > BufferLogic.getMaxBufferLength(gameState);
+    }
+
+    private int checkFailedSeq(GameState gameState) {
         List<String> bufferString = BufferLogic.getBufferAsString(gameState);
         String headOfSeq = seq.get(0);
 
@@ -34,17 +51,6 @@ public class Sequence {
             matchIndex = incrementOfIndex < 0 ? -1 : (matchIndex + incrementOfIndex + 1);
         }
 
-        if (matchIndex < 0)
-            return BufferLogic.getBuffer(gameState).size() + seq.size() > BufferLogic.getMaxBufferLength(gameState);
-        return matchIndex + seq.size() > BufferLogic.getMaxBufferLength(gameState);
-    }
-
-    public boolean isSequenceCompleted(GameState gameState) {
-        if (BufferLogic.getBuffer(gameState).isEmpty()) return false;
-
-        String bufferString = BufferLogic.getBuffer(gameState).stream()
-                .map(cl -> gameState.gameLevel.matrix.get(cl) + " ")
-                .reduce("", String::concat);
-        return bufferString.contains(String.join(" ", seq));
+        return matchIndex;
     }
 }
