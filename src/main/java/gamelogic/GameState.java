@@ -1,9 +1,12 @@
 package main.java.gamelogic;
 
-import main.java.commands.Command;
+import main.java.commands.Select;
+import main.java.commands.UndoableCommand;
 import main.java.misc.Cell;
 
 import java.util.Stack;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameState {
     public Cell selector;
@@ -19,7 +22,7 @@ public class GameState {
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
         selector = new Cell(0, 0);
-        timerLogic = new TimerLogic(10);
+        timerLogic = new TimerLogic(1000);
     }
 
     public void tryUndo() {
@@ -28,8 +31,8 @@ public class GameState {
     }
 
     public void tryRedo() {
-        if (undoCommandStack.isEmpty()) return;
-        undoCommandStack.pop().tryExecute(this);
+        if (redoCommandStack.isEmpty()) return;
+        redoCommandStack.pop().tryExecute(this);
     }
 
     public int getCurrentBufferLength() {

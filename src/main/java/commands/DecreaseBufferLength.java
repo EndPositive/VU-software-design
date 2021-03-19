@@ -18,7 +18,4 @@ public class DecreaseBufferLength extends Command {
         return false;
     }
 
-    protected void undo(GameState gameState) {
-
-    }
 }

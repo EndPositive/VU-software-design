@@ -4,27 +4,9 @@ import main.java.gamelogic.GameState;
 
 abstract public class Command {
 
-    private boolean executed = false;
-    private final boolean allowUndoRedo;
-
-    public Command(boolean allowUndoRedo) {
-        this.allowUndoRedo = allowUndoRedo;
-    }
-
-    public void tryExecute(GameState gameState) {
-        if (executed) return;
-        executed = execute(gameState);
-
-        if (executed && allowUndoRedo) gameState.commandStack.push(this);
+    public boolean tryExecute(GameState gameState) {
+        return execute(gameState);
     }
 
     abstract protected boolean execute(GameState gameState);
-
-    public void tryUndo(GameState gameState) {
-        if (!executed) return;
-        undo(gameState);
-        executed = false;
-    }
-
-    abstract protected void undo(GameState gameState);
 }

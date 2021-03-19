@@ -8,7 +8,6 @@ public class Move extends Command {
     private final Direction dir;
 
     public Move(Direction direction) {
-        super(false);
         dir = direction;
     }
 
@@ -18,8 +17,6 @@ public class Move extends Command {
         gameState.selector = gameState.selector.applyDir(dir);
         return true;
     }
-
-    protected void undo(GameState gameState) {}
 
     private boolean isValidMove(GameState gameState) {
         Cell nextCell = gameState.selector.applyDir(dir);
