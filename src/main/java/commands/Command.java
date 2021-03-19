@@ -4,8 +4,8 @@ import main.java.gamelogic.GameState;
 
 abstract public class Command {
 
-    public boolean tryExecute(GameState gameState) {
-        return execute(gameState);
+    public void tryExecute(GameState gameState) {
+        execute(gameState);
     }
 
     abstract protected boolean execute(GameState gameState);

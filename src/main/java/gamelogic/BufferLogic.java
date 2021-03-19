@@ -24,4 +24,7 @@ public class BufferLogic {
         return gameState.gameLevel.bufferLength + gameState.offsetBufferLength;
     }
 
+    public static boolean isBufferFull(GameState gameState) {
+        return getBuffer(gameState).size() == getMaxBufferLength(gameState);
+    }
 }
