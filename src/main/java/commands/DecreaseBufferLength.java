@@ -11,6 +11,7 @@ public class DecreaseBufferLength extends Command {
             gameState.offsetBufferLength--;
             return true;
         }
+
         return false;
     }
 

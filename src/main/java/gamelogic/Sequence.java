@@ -22,13 +22,16 @@ public class Sequence {
         // TODO: MAKE FUNCTION
         List<String> bufferString = BufferLogic.getBufferAsString(gameState);
         String headOfSeq = seq.get(0);
+
         int matchIndex = bufferString.indexOf(headOfSeq);
         int bufferSize = BufferLogic.getBuffer(gameState).size();
         int incrementOfIndex;
+
         while (matchIndex >= 0 && Collections.indexOfSubList(seq, bufferString.subList(matchIndex, bufferSize)) < 0) {
             incrementOfIndex = bufferString.subList(matchIndex + 1, bufferSize).indexOf(headOfSeq);
             matchIndex = incrementOfIndex < 0 ? -1 : (matchIndex + incrementOfIndex + 1);
         }
+
         if (matchIndex < 0)
             return BufferLogic.getBuffer(gameState).size() + seq.size() > BufferLogic.getMaxBufferLength(gameState);
         return matchIndex + seq.size() > BufferLogic.getMaxBufferLength(gameState);

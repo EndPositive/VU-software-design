@@ -20,7 +20,7 @@ public class GameState {
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
         selector = new Cell(0, 0);
-        timerLogic = new TimerLogic(1000);
+        timerLogic = new TimerLogic(10);
     }
 
     public void tryUndo() {
