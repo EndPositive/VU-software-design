@@ -4,10 +4,11 @@ import main.java.gamelogic.GameState;
 
 public abstract class UndoRedoCommand extends Command {
 
-    abstract protected boolean redo(GameState gameState);
+    protected abstract boolean redo(GameState gameState);
 
-    abstract protected void undo(GameState gameState);
+    protected abstract void undo(GameState gameState);
 
+    @Override
     public final void tryExecute(GameState gameState) {
         gameState.redoCommandStack.clear();
         if (execute(gameState)) gameState.commandStack.push(this);

@@ -4,16 +4,17 @@ import main.java.commands.Select;
 import main.java.commands.UndoRedoCommand;
 import main.java.misc.Cell;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class GameState {
     public Cell selector;
     public final GameLevel gameLevel;
     public final TimerLogic timerLogic;
-    public final Stack<UndoRedoCommand> commandStack = new Stack<>();
-    public final Stack<UndoRedoCommand> redoCommandStack = new Stack<>();
+    public final Deque<UndoRedoCommand> commandStack = new ArrayDeque<>();
+    public final Deque<UndoRedoCommand> redoCommandStack = new ArrayDeque<>();
 
     public int offsetBufferLength = 0;
 
@@ -26,7 +27,7 @@ public class GameState {
     public List<Select> getSelectCommands() {
         return commandStack.stream()
                 .filter(el -> el instanceof Select)
-                .map(el -> ((Select) el))
+                .map(Select.class::cast)
                 .collect(Collectors.toList());
     }
 

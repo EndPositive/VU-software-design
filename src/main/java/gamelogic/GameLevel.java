@@ -49,6 +49,6 @@ public class GameLevel {
             // this line reads a line from the file and parses it
             solutions.add(new Sequence(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+"))));
 
-        if (solutions.size() == 0) throw new NoSuchElementException();
+        if (solutions.isEmpty()) throw new NoSuchElementException();
     }
 }

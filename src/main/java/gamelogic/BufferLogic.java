@@ -1,5 +1,6 @@
 package main.java.gamelogic;
 
+import main.java.commands.Select;
 import main.java.misc.Cell;
 
 import java.util.List;
@@ -8,9 +9,12 @@ import java.util.stream.Collectors;
 public class BufferLogic {
     public static final int MAX_OFFSET = 2;
 
+    private BufferLogic() {
+    }
+
     public static List<Cell> getBuffer(GameState gameState) {
         return gameState.getSelectCommands().stream()
-                .map(el -> el.selected)
+                .map(Select::getSelected)
                 .collect(Collectors.toList());
     }
 

@@ -2,6 +2,9 @@ package main.java.gamelogic;
 
 
 public class ScoreLogic {
+    private ScoreLogic() {
+    }
+
     public static int calculateScore(GameState gameState) {
         // See documentation for properly formatted formula
         long numOfCompletedSeqs = gameState.gameLevel.solutions.stream().filter(seq -> seq.isSequenceCompleted(gameState)).count();

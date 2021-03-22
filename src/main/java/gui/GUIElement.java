@@ -18,7 +18,7 @@ public abstract class GUIElement {
 
     protected final int scorePadding;
 
-    public GUIElement(float x, float y) {
+    protected GUIElement(float x, float y) {
         this.x = x;
         this.y = y;
 
@@ -36,5 +36,5 @@ public abstract class GUIElement {
         font = new BitmapFont();
     }
 
-    abstract public void render(GameState gameState);
+    public abstract void render(GameState gameState);
 }

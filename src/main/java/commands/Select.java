@@ -5,7 +5,11 @@ import main.java.gamelogic.GameState;
 import main.java.misc.Cell;
 
 public class Select extends UndoRedoCommand {
-    public Cell selected;
+    private Cell selected;
+
+    public Cell getSelected() {
+        return selected;
+    }
 
     protected boolean execute(GameState gameState) {
         if (!gameState.timerLogic.hasStarted()) gameState.timerLogic.start();

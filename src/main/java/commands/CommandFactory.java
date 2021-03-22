@@ -4,6 +4,9 @@ import com.badlogic.gdx.Input.Keys;
 import main.java.misc.Direction;
 
 public class CommandFactory {
+    private CommandFactory() {
+    }
+
     public static Command createCommand(int keycode) {
         switch (keycode) {
             case Keys.UP:
