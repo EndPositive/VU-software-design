@@ -23,16 +23,6 @@ public class GameState {
         timerLogic = new TimerLogic(10);
     }
 
-    public void tryUndo() {
-        if (commandStack.isEmpty()) return;
-        commandStack.pop().tryUndo(this);
-    }
-
-    public void tryRedo() {
-        if (redoCommandStack.isEmpty()) return;
-        redoCommandStack.pop().tryRedo(this);
-    }
-
     public List<Select> getSelectCommands() {
         return commandStack.stream()
                 .filter(el -> el instanceof Select)

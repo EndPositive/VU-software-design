@@ -22,6 +22,10 @@ public class CommandFactory {
                 return new Select();
             case Keys.ENTER:
                 return new ConfirmBuffer();
+            case Keys.BACKSPACE:
+                return new Undo();
+            case Keys.R:
+                return new Redo();
             default:
                 return null;
         }

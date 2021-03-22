@@ -40,25 +40,18 @@ public class GameplayScreen extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
+                if (keycode == Keys.ESCAPE) {
+                    Gdx.app.exit();
+                    return true;
+                }
+
                 Command command = CommandFactory.createCommand(keycode);
                 if (command != null) {
                     command.tryExecute(gameState);
                     return true;
                 }
 
-                switch (keycode) {
-                    case Keys.BACKSPACE:
-                        gameState.tryUndo();
-                        return true;
-                    case Keys.R:
-                        gameState.tryRedo();
-                        return true;
-                    case Keys.ESCAPE:
-                        Gdx.app.exit();
-                        return true;
-                    default:
-                        return false;
-                }
+                return false;
             }
         });
     }
