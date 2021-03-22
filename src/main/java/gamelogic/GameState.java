@@ -40,4 +40,8 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
+    public boolean isGameOver() {
+        return timerLogic.hasExpired() || timerLogic.hasStopped();
+    }
+
 }

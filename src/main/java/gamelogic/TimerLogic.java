@@ -14,6 +14,14 @@ public class TimerLogic {
         return startTime != -1;
     }
 
+    public boolean hasStopped() {
+        return stopTime > -1;
+    }
+
+    public boolean hasExpired() {
+        return hasStarted() && timeLeft() <= 0;
+    }
+
     public void start() {
         startTime = System.currentTimeMillis();
     }
