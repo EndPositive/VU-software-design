@@ -1,9 +1,9 @@
 package main.java.gamelogic;
 
 public class TimerLogic {
-    public long startTime = -1;
-    public final long totalTime;
-    public long stopTime = -1;
+    private long startTime = -1;
+    private final long totalTime;
+    private long stopTime = -1;
 
     //'time' is multiplied by 1000 to convert it from milliseconds to seconds.
     public TimerLogic(long time) {
@@ -23,8 +23,8 @@ public class TimerLogic {
     }
 
     public long timeLeft() {
-        // if the timer hasn't started we cannot give the time left
-        if (!hasStarted()) return -1;
+        // if the timer hasn't started we just give the total time
+        if (!hasStarted()) return totalTime / 1000;
 
         // if the timer has been stopped, we give the difference between when it was stopped and when it started
         if (stopTime > -1) return (stopTime - startTime) / 1000;

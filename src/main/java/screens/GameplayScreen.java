@@ -92,7 +92,7 @@ public class GameplayScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
         guiElements.forEach(el -> el.render(gameState));
 
-        if (gameState.timerLogic.timeLeft() == 0) {
+        if (gameState.timerLogic.hasStarted() && gameState.timerLogic.timeLeft() == 0) {
             game.setScreen(new GameOverScreen(game, gameState));
         }
     }
