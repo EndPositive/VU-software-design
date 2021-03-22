@@ -1,6 +1,5 @@
 package main.java.gui;
 
-import main.java.gamelogic.BufferLogic;
 import main.java.gamelogic.GameState;
 
 public class BufferGUI extends GUIElement {
@@ -12,11 +11,11 @@ public class BufferGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
-        for (int i = 0; i < BufferLogic.getMaxBufferLength(gameState); i++) {
+        for (int i = 0; i < gameState.buffer.getMaxBufferLength(); i++) {
             font.draw(batch, "__", x + i * padding, y);
 
-            if (BufferLogic.getBuffer(gameState).size() > i) {
-                font.draw(batch, gameState.gameLevel.matrix.get(BufferLogic.getBuffer(gameState).get(i)), x + i * padding, y);
+            if (gameState.buffer.size() > i) {
+                font.draw(batch, gameState.gameLevel.matrix.get(gameState.buffer.get(i)), x + i * padding, y);
             }
         }
 

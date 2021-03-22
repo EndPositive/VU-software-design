@@ -1,6 +1,5 @@
 package main.java.commands;
 
-import main.java.gamelogic.BufferLogic;
 import main.java.gamelogic.GameState;
 import main.java.misc.Cell;
 import main.java.misc.Direction;
@@ -25,7 +24,7 @@ public class Move extends Command {
                 nextCell.y < gameState.gameLevel.matrixSize &&
                 nextCell.x >= 0 &&
                 nextCell.y >= 0 &&
-                (BufferLogic.getBuffer(gameState).size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
+                (gameState.buffer.size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
     }
 
 }

@@ -2,6 +2,7 @@ package main.java.gamelogic;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sequence {
     private final List<String> seq;
@@ -16,31 +17,33 @@ public class Sequence {
     }
 
     public boolean isSequenceCompleted(GameState gameState) {
-        if (BufferLogic.getBuffer(gameState).isEmpty()) return false;
+        if (gameState.buffer.isEmpty()) return false;
 
-        String bufferString = BufferLogic.getBuffer(gameState).stream()
+        String bufferString = gameState.buffer.stream()
                 .map(cl -> gameState.gameLevel.matrix.get(cl) + " ")
                 .reduce("", String::concat);
         return bufferString.contains(String.join(" ", seq));
     }
 
     public boolean isSequenceFailed(GameState gameState) {
-        if (BufferLogic.getBuffer(gameState).isEmpty()) return false;
+        if (gameState.buffer.isEmpty()) return false;
 
         int checkFailedSeq = checkFailedSeq(gameState);
 
         //TODO: This is very confusing. Add some comments and maybe rename `checkFailedSeq`
         if (checkFailedSeq < 0)
-            return BufferLogic.getBuffer(gameState).size() + seq.size() > BufferLogic.getMaxBufferLength(gameState);
-        return checkFailedSeq + seq.size() > BufferLogic.getMaxBufferLength(gameState);
+            return gameState.buffer.size() + seq.size() > gameState.buffer.getMaxBufferLength();
+        return checkFailedSeq + seq.size() > gameState.buffer.getMaxBufferLength();
     }
 
     private int checkFailedSeq(GameState gameState) {
-        List<String> bufferString = BufferLogic.getBufferAsString(gameState);
+        List<String> bufferString = gameState.buffer.stream()
+                .map(gameState.gameLevel.matrix::get)
+                .collect(Collectors.toList());
         String headOfSeq = seq.get(0);
 
         int matchIndex = bufferString.indexOf(headOfSeq);
-        int bufferSize = BufferLogic.getBuffer(gameState).size();
+        int bufferSize = gameState.buffer.size();
         int incrementOfIndex;
 
         while (matchIndex >= 0 && Collections.indexOfSubList(seq, bufferString.subList(matchIndex, bufferSize)) < 0) {

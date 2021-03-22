@@ -9,7 +9,7 @@ public class ScoreLogic {
         // See documentation for properly formatted formula
         long numOfCompletedSeqs = gameState.gameLevel.solutions.stream().filter(seq -> seq.isSequenceCompleted(gameState)).count();
         return Math.round(factorial(numOfCompletedSeqs) * (gameState.timerLogic.timeLeft() + 1) * numOfCompletedSeqs *
-                gameState.gameLevel.bufferLength * (gameState.gameLevel.bufferLength - gameState.offsetBufferLength * 2L)) / 10;
+                gameState.gameLevel.bufferLength * (gameState.gameLevel.bufferLength - gameState.buffer.offset * 2L)) / 10;
     }
 
     private static long factorial(long n) {

@@ -1,13 +1,10 @@
 package main.java.gamelogic;
 
-import main.java.commands.Select;
 import main.java.commands.UndoRedoCommand;
 import main.java.misc.Cell;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameState {
     public Cell selector;
@@ -15,20 +12,13 @@ public class GameState {
     public final TimerLogic timerLogic;
     public final Deque<UndoRedoCommand> commandStack = new ArrayDeque<>();
     public final Deque<UndoRedoCommand> redoCommandStack = new ArrayDeque<>();
-
-    public int offsetBufferLength = 0;
+    public final Buffer buffer;
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
         selector = new Cell(0, 0);
         timerLogic = new TimerLogic(10);
-    }
-
-    public List<Select> getSelectCommands() {
-        return commandStack.stream()
-                .filter(el -> el instanceof Select)
-                .map(Select.class::cast)
-                .collect(Collectors.toList());
+        buffer = new Buffer(this);
     }
 
     public boolean isGameOver() {
