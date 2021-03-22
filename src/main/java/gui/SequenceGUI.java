@@ -2,7 +2,7 @@ package main.java.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import main.java.gamelogic.GameState;
-import main.java.misc.Sequence;
+import main.java.gamelogic.Sequence;
 
 public class SequenceGUI extends GUIElement {
     public SequenceGUI(float x, float y) {
