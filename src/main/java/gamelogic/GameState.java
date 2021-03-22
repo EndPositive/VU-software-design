@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class GameState {
-    public Cell selector;
+    public Cell selector = new Cell(0, 0);
     public final GameLevel gameLevel;
     public final TimerLogic timerLogic;
     public final Deque<UndoRedoCommand> commandStack = new ArrayDeque<>();
@@ -16,7 +16,6 @@ public class GameState {
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
-        selector = new Cell(0, 0);
         timerLogic = new TimerLogic(10);
     }
 
