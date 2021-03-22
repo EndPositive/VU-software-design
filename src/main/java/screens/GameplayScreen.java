@@ -31,7 +31,7 @@ public class GameplayScreen extends ScreenAdapter {
                 new GridGUI(20, 300),
                 new SequenceGUI(220, 300),
                 new BufferGUI(220, 330),
-                new TimerGUI(gameState.timerLogic, 20, 330),
+                new TimerGUI(20, 330),
                 new TutorialGUI(20, 120)
         );
     }
