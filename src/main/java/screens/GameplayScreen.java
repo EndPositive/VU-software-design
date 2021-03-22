@@ -45,7 +45,7 @@ public class GameplayScreen extends ScreenAdapter {
             public boolean keyUp(int keycode) {
                 switch (keycode) {
                     case Keys.ENTER:
-                        gameState.timerLogic.stop();
+                        new ConfirmBuffer().tryExecute(gameState);
                         break;
                     case Keys.UP:
                         new Move(Direction.UP).tryExecute(gameState);
