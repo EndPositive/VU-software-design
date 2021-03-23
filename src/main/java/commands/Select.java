@@ -11,7 +11,7 @@ public class Select extends UndoRedoCommand {
     }
 
     protected boolean execute(GameState gameState) {
-        if (!gameState.timerLogic.hasStarted()) gameState.timerLogic.start();
+        if (!gameState.timer.hasStarted()) gameState.timer.start();
         if (gameState.buffer.isFull()) return false;
         selected = gameState.selector;
         return true;

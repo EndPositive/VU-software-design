@@ -8,7 +8,7 @@ public class ScoreLogic {
     public static int calculateScore(GameState gameState) {
         // See documentation for properly formatted formula
         long numOfCompletedSeqs = gameState.gameLevel.solutions.stream().filter(seq -> seq.isSequenceCompleted(gameState)).count();
-        return Math.round(factorial(numOfCompletedSeqs) * (gameState.timerLogic.timeLeft() + 1) * numOfCompletedSeqs *
+        return Math.round(factorial(numOfCompletedSeqs) * (gameState.timer.timeLeft() + 1) * numOfCompletedSeqs *
                 gameState.gameLevel.bufferLength * (gameState.gameLevel.bufferLength - gameState.buffer.offset * 2L)) / 10;
     }
 

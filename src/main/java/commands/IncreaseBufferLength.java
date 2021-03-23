@@ -7,7 +7,7 @@ import static main.java.gamelogic.Buffer.MAX_OFFSET;
 public class IncreaseBufferLength extends Command {
 
     protected boolean execute(GameState gameState) {
-        if (gameState.buffer.offset < MAX_OFFSET && !gameState.timerLogic.hasStarted()) {
+        if (gameState.buffer.offset < MAX_OFFSET && !gameState.timer.hasStarted()) {
             gameState.buffer.offset++;
             return true;
         }

@@ -1,12 +1,12 @@
-package main.java.gamelogic;
+package main.java.misc;
 
-public class TimerLogic {
+public class Timer {
     private long startTime = -1;
     private final long totalTime;
     private long stopTime = -1;
 
     //'time' is multiplied by 1000 to convert it from milliseconds to seconds.
-    public TimerLogic(long time) {
+    public Timer(long time) {
         totalTime = time * 1000;
     }
 
