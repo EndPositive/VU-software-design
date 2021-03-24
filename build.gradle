@@ -49,7 +49,7 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 
 task dist(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'main.java.Main'
+        attributes 'Main-Class': 'main.java.Launcher'
     }
     destinationDir = file("$rootDir/out/artifacts/software_design_vu_2020_jar/")
     dependsOn configurations.runtimeClasspath
