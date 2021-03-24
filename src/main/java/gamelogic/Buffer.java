@@ -41,7 +41,7 @@ public class Buffer {
     }
 
     private List<Cell> parseBuffer() {
-        return gameState.commandStack.stream()
+        return gameState.commandHistory.stream()
                 .filter(el -> el instanceof Select)
                 .map(Select.class::cast)
                 .map(Select::getSelected)

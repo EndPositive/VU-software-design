@@ -11,8 +11,8 @@ public class GameState {
     public Cell selector = new Cell(0, 0);
     public final GameLevel gameLevel;
     public final Timer timer;
-    public final Deque<UndoRedoCommand> commandStack = new ArrayDeque<>();
-    public final Deque<UndoRedoCommand> redoCommandStack = new ArrayDeque<>();
+    public final Deque<UndoRedoCommand> commandHistory = new ArrayDeque<>();
+    public final Deque<UndoRedoCommand> commandFuture = new ArrayDeque<>();
     public final Buffer buffer = new Buffer(this);
 
     public GameState(GameLevel gameLevel) {

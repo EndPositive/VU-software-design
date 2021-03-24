@@ -4,8 +4,8 @@ import main.java.gamelogic.GameState;
 
 public class Redo extends Command {
     protected boolean execute(GameState gameState) {
-        if (gameState.redoCommandStack.isEmpty()) return false;
-        gameState.redoCommandStack.pop().tryRedo(gameState);
+        if (gameState.commandFuture.isEmpty()) return false;
+        gameState.commandFuture.pop().tryRedo(gameState);
         return true;
     }
 }
