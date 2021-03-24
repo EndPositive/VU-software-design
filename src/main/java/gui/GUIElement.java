@@ -31,7 +31,7 @@ public abstract class GUIElement {
         scorePadding = 60;          //Is this needed? Go to ScoreGUI.java for more
     }
 
-    public final void create() {
+    public final void show() {
         batch = new SpriteBatch();
         font = new BitmapFont();
     }

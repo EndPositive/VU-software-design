@@ -35,7 +35,7 @@ public class GameplayScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        guiElements.forEach(GUIElement::create);
+        guiElements.forEach(GUIElement::show);
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
