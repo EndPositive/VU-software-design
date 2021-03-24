@@ -10,14 +10,13 @@ import java.util.Deque;
 public class GameState {
     public Cell selector = new Cell(0, 0);
     public final GameLevel gameLevel;
-    public final Timer timer;
+    public final Timer timer = new Timer(10);
     public final Deque<UndoRedoCommand> commandHistory = new ArrayDeque<>();
     public final Deque<UndoRedoCommand> commandFuture = new ArrayDeque<>();
     public final Buffer buffer = new Buffer(this);
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
-        timer = new Timer(10);
     }
 
     public boolean isGameOver() {
