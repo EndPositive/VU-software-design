@@ -33,7 +33,7 @@ public class Buffer {
     }
 
     public int getMaxBufferLength() {
-        return gameState.gameLevel.bufferLength + offset;
+        return gameState.getLevel().getBufferLength() + offset;
     }
 
     public boolean isFull() {
@@ -41,7 +41,7 @@ public class Buffer {
     }
 
     private List<Cell> parseBuffer() {
-        return gameState.commandHistory.stream()
+        return gameState.getCommandHistory().stream()
                 .filter(el -> el instanceof Select)
                 .map(Select.class::cast)
                 .map(Select::getSelected)

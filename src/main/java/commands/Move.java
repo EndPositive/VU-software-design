@@ -14,17 +14,17 @@ public class Move extends Command {
     protected boolean execute(GameState gameState) {
         if (!isValidMove(gameState)) return false;
 
-        gameState.selector = gameState.selector.applyDir(dir);
+        gameState.setSelector(gameState.getSelector().applyDir(dir));
         return true;
     }
 
     private boolean isValidMove(GameState gameState) {
-        Cell nextCell = gameState.selector.applyDir(dir);
-        return nextCell.x < gameState.gameLevel.matrixSize &&
-                nextCell.y < gameState.gameLevel.matrixSize &&
+        Cell nextCell = gameState.getSelector().applyDir(dir);
+        return nextCell.x < gameState.getLevel().getMatrixSize() &&
+                nextCell.y < gameState.getLevel().getMatrixSize() &&
                 nextCell.x >= 0 &&
                 nextCell.y >= 0 &&
-                (gameState.buffer.size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
+                (gameState.getBuf().size() % 2 == 0) == (dir == Direction.RIGHT || dir == Direction.LEFT);
     }
 
 }

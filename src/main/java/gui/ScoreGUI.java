@@ -22,10 +22,6 @@ public class ScoreGUI extends GUIElement {
         font.setColor(Color.GOLD);
         font.draw(batch, String.valueOf(score), x, y - padding * 2);
 
-        /*
-        TODO: SHOULD WE USE PADDING * 2 OR MAKE A NEW VARIABLE FOR THIS?
-         */
-
         batch.end();
     }
 }

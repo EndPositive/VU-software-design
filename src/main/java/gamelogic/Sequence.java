@@ -17,29 +17,29 @@ public class Sequence {
     }
 
     public boolean isSequenceCompleted(GameState gameState) {
-        if (gameState.buffer.isEmpty()) return false;
+        if (gameState.getBuf().isEmpty()) return false;
 
-        String bufferString = gameState.buffer.stream()
-                .map(cl -> gameState.gameLevel.matrix.get(cl) + " ")
+        String bufferString = gameState.getBuf().stream()
+                .map(cl -> gameState.getLevel().getMatrix().get(cl) + " ")
                 .reduce("", String::concat);
         return bufferString.contains(String.join(" ", seq));
     }
 
     public boolean isSequenceFailed(GameState gameState) {
-        if (gameState.buffer.isEmpty()) return false;
+        if (gameState.getBuf().isEmpty()) return false;
 
-        List<String> bufferString = gameState.buffer.stream()
-                .map(gameState.gameLevel.matrix::get)
+        List<String> bufferString = gameState.getBuf().stream()
+                .map(gameState.getLevel().getMatrix()::get)
                 .collect(Collectors.toList());
 
         int indexOfMatchedSubsequence = indexOfCommonSubsequence(bufferString, seq);
 
         // In case of no matched subsequence, check if there are still enough spots in buffer for the sequence
         if (indexOfMatchedSubsequence < 0)
-            return gameState.buffer.size() + seq.size() > gameState.buffer.getMaxBufferLength();
+            return gameState.getBuf().size() + seq.size() > gameState.getBuf().getMaxBufferLength();
 
         // If matched sequence is found, check if there are still enough spots in buffer for remaining subsequence
-        return indexOfMatchedSubsequence + seq.size() > gameState.buffer.getMaxBufferLength();
+        return indexOfMatchedSubsequence + seq.size() > gameState.getBuf().getMaxBufferLength();
     }
 
     private int indexOfCommonSubsequence(List<String> firstSequence, List<String> secondSequence) {

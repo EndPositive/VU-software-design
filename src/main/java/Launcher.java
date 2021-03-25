@@ -14,6 +14,7 @@ public class Launcher {
         config.height = 350;
         config.title = "Breach Protocol";
         config.resizable = false;
+
         try {
             new LwjglApplication(new BreachGame(args[0]), config);
         } catch (Exception e) {

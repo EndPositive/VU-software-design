@@ -7,10 +7,10 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class GameLevel {
-    public int matrixSize;
-    public int bufferLength;
-    public final List<Sequence> solutions = new ArrayList<>();
-    public final Map<Cell, String> matrix = new HashMap<>();
+    private final Map<Cell, String> matrix = new HashMap<>();
+    private final List<Sequence> solutions = new ArrayList<>();
+    private int matrixSize;
+    private int bufferLength;
 
     public GameLevel(String filePath) throws FileNotFoundException, NumberFormatException, NoSuchElementException {
         File file = new File(filePath);
@@ -50,5 +50,21 @@ public class GameLevel {
             solutions.add(new Sequence(Arrays.asList(sc.nextLine().toUpperCase().split("\\s+"))));
 
         if (solutions.isEmpty()) throw new NoSuchElementException();
+    }
+
+    public int getMatrixSize() {
+        return matrixSize;
+    }
+
+    public int getBufferLength() {
+        return bufferLength;
+    }
+
+    public Map<Cell, String> getMatrix() {
+        return matrix;
+    }
+
+    public List<Sequence> getSolutions() {
+        return solutions;
     }
 }

@@ -16,8 +16,6 @@ public abstract class GUIElement {
     protected final int gridPaddingOffset;
     protected final int gridCoordinateOffset;
 
-    protected final int scorePadding;
-
     protected GUIElement(float x, float y) {
         this.x = x;
         this.y = y;
@@ -25,10 +23,8 @@ public abstract class GUIElement {
         padding = 30;
 
         gridSelectorSize = 20;
-        gridPaddingOffset = 15;
-        gridCoordinateOffset = 10;
-
-        scorePadding = 60;          //Is this needed? Go to ScoreGUI.java for more
+        gridPaddingOffset = padding / 2;
+        gridCoordinateOffset = padding / 3;
     }
 
     public final void show() {

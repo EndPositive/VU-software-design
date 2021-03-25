@@ -16,8 +16,8 @@ public class SequenceGUI extends GUIElement {
         font.setColor(Color.BLUE);
         font.draw(batch, "Sequences to complete: ", x, y);
 
-        for (int i = 0; i < gameState.gameLevel.solutions.size(); i++) {
-            Sequence sequenceTemp = gameState.gameLevel.solutions.get(i);
+        for (int i = 0; i < gameState.getLevel().getSolutions().size(); i++) {
+            Sequence sequenceTemp = gameState.getLevel().getSolutions().get(i);
 
             if (sequenceTemp.isSequenceCompleted(gameState)) {
                 font.setColor(Color.GREEN);
@@ -25,7 +25,6 @@ public class SequenceGUI extends GUIElement {
                 font.setColor(Color.RED);
             } else font.setColor(Color.WHITE);
 
-            // TODO: reformat numbers below
             font.draw(batch, sequenceTemp.toString() + "\n", x, y - i * padding - padding);
         }
 

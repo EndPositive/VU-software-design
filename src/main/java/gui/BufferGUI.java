@@ -11,11 +11,11 @@ public class BufferGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
-        for (int i = 0; i < gameState.buffer.getMaxBufferLength(); i++) {
+        for (int i = 0; i < gameState.getBuf().getMaxBufferLength(); i++) {
             font.draw(batch, "__", x + i * padding, y);
 
-            if (gameState.buffer.size() > i) {
-                font.draw(batch, gameState.gameLevel.matrix.get(gameState.buffer.get(i)), x + i * padding, y);
+            if (gameState.getBuf().size() > i) {
+                font.draw(batch, gameState.getLevel().getMatrix().get(gameState.getBuf().get(i)), x + i * padding, y);
             }
         }
 
