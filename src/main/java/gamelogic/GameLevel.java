@@ -22,7 +22,7 @@ public class GameLevel {
     }
 
     private void setBufferLengthFromFile(Scanner sc) {
-        setBufferLength(Integer.parseInt(sc.nextLine()));
+        bufferLength = Integer.parseInt(sc.nextLine());
         sc.nextLine();
     }
 
@@ -40,7 +40,7 @@ public class GameLevel {
             i++;
         }
 
-        setMatrixSize(i);
+        matrixSize = i;
         if (getMatrixSize() == 0) throw new NoSuchElementException();
     }
 
@@ -56,23 +56,15 @@ public class GameLevel {
         return matrixSize;
     }
 
-    public void setMatrixSize(int size) {
-        matrixSize = size;
-    }
-
     public int getBufferLength() {
         return bufferLength;
     }
 
-    public void setBufferLength(int length) {
-        bufferLength = length;
-    }
-
     public Map<Cell, String> getMatrix() {
-        return matrix;
+        return new HashMap<>(matrix);
     }
 
     public List<Sequence> getSolutions() {
-        return solutions;
+        return new ArrayList<>(solutions);
     }
 }

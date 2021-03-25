@@ -22,7 +22,7 @@ public abstract class GUIElement {
 
         padding = 30;
 
-        gridSelectorSize = 20;
+        gridSelectorSize = padding - 10;
         gridPaddingOffset = padding / 2;
         gridCoordinateOffset = padding / 3;
     }

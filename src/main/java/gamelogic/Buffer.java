@@ -27,7 +27,7 @@ public class Buffer {
     }
 
     public int getMaxBufferLength() {
-        return gameState.getLevel().getBufferLength() + offset;
+        return gameState.gameLevel.getBufferLength() + offset;
     }
 
     public boolean isFull() {
@@ -35,11 +35,11 @@ public class Buffer {
     }
 
     public List<String> toList() {
-        return gameState.getCommandHistory().stream()
+        return gameState.commandHistory.stream()
                 .filter(el -> el instanceof Select)
                 .map(Select.class::cast)
                 .map(Select::getSelected)
-                .map(gameState.getLevel().getMatrix()::get)
+                .map(gameState.gameLevel.getMatrix()::get)
                 .collect(Collectors.toList());
     }
 }

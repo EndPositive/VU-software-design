@@ -16,20 +16,20 @@ public class Sequence {
     }
 
     public boolean isSequenceCompleted(GameState gameState) {
-        return Collections.indexOfSubList(gameState.getBuf().toList(), seq) != -1;
+        return Collections.indexOfSubList(gameState.buffer.toList(), seq) != -1;
     }
 
     public boolean isSequenceFailed(GameState gameState) {
-        if (gameState.getBuf().isEmpty()) return false;
+        if (gameState.buffer.isEmpty()) return false;
 
-        int indexOfMatchedSubsequence = indexOfCommonSubsequence(gameState.getBuf().toList(), seq);
+        int indexOfMatchedSubsequence = indexOfCommonSubsequence(gameState.buffer.toList(), seq);
 
         // In case of no matched subsequence, check if there are still enough spots in buffer for the sequence
         if (indexOfMatchedSubsequence < 0)
-            return gameState.getBuf().size() + seq.size() > gameState.getBuf().getMaxBufferLength();
+            return gameState.buffer.size() + seq.size() > gameState.buffer.getMaxBufferLength();
 
         // If matched sequence is found, check if there are still enough spots in buffer for remaining subsequence
-        return indexOfMatchedSubsequence + seq.size() > gameState.getBuf().getMaxBufferLength();
+        return indexOfMatchedSubsequence + seq.size() > gameState.buffer.getMaxBufferLength();
     }
 
     private int indexOfCommonSubsequence(List<String> firstSequence, List<String> secondSequence) {

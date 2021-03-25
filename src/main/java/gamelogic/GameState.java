@@ -7,12 +7,12 @@ import main.java.misc.Timer;
 import java.util.Stack;
 
 public class GameState {
-    private final GameLevel gameLevel;
-    private final Timer timer = new Timer(10);
-    private final Buffer buffer = new Buffer(this);
-    private final Stack<UndoRedoCommand> commandFuture = new Stack<>();
-    private final Stack<UndoRedoCommand> commandHistory = new Stack<>();
-    private Cell selector = new Cell(0, 0);
+    public final GameLevel gameLevel;
+    public final Timer timer = new Timer(10);
+    public final Buffer buffer = new Buffer(this);
+    public final Stack<UndoRedoCommand> commandFuture = new Stack<>();
+    public final Stack<UndoRedoCommand> commandHistory = new Stack<>();
+    public Cell selector = new Cell(0, 0);
 
     public GameState(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
@@ -20,33 +20,5 @@ public class GameState {
 
     public boolean isGameOver() {
         return timer.hasExpired() || timer.hasStopped();
-    }
-
-    public Buffer getBuf() {
-        return buffer;
-    }
-
-    public Timer getTimer() {
-        return timer;
-    }
-
-    public Cell getSelector() {
-        return selector;
-    }
-
-    public void setSelector(Cell newPos) {
-        selector = newPos;
-    }
-
-    public GameLevel getLevel() {
-        return gameLevel;
-    }
-
-    public Stack<UndoRedoCommand> getCommandFuture() {
-        return commandFuture;
-    }
-
-    public Stack<UndoRedoCommand> getCommandHistory() {
-        return commandHistory;
     }
 }

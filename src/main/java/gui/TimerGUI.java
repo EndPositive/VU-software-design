@@ -12,9 +12,9 @@ public class TimerGUI extends GUIElement {
     public void render(GameState gameState) {
         batch.begin();
 
-        if (gameState.getTimer().hasStarted()) font.setColor(Color.RED);
+        if (gameState.timer.hasStarted()) font.setColor(Color.RED);
 
-        font.draw(batch, "Time left: " + gameState.getTimer().timeLeft() + " seconds", x, y);
+        font.draw(batch, "Time left: " + gameState.timer.timeLeft() + " seconds", x, y);
 
         batch.end();
     }

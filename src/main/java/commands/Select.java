@@ -11,19 +11,19 @@ public class Select extends UndoRedoCommand {
     }
 
     protected boolean execute(GameState gameState) {
-        if (!gameState.getTimer().hasStarted()) gameState.getTimer().start();
-        if (gameState.getBuf().isFull()) return false;
-        selected = gameState.getSelector();
+        if (!gameState.timer.hasStarted()) gameState.timer.start();
+        if (gameState.buffer.isFull()) return false;
+        selected = gameState.selector;
         return true;
     }
 
     protected void undo(GameState gameState) {
-        gameState.setSelector(selected);
+        gameState.selector = selected;
     }
 
     protected boolean redo(GameState gameState) {
-        if (gameState.getBuf().isFull()) return false;
-        gameState.setSelector(selected);
+        if (gameState.buffer.isFull()) return false;
+        gameState.selector = selected;
         return true;
     }
 }

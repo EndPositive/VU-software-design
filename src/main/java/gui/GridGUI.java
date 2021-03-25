@@ -12,19 +12,19 @@ public class GridGUI extends GUIElement {
 
     @Override
     public void render(GameState gameState) {
-        Cell selector = gameState.getSelector();
+        Cell selector = gameState.selector;
 
         //Render the gray area spanning the entire row/column that the user can navigate
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GRAY);
 
-        if (gameState.getBuf().size() % 2 == 0) {
+        if (gameState.buffer.size() % 2 == 0) {
             shapeRenderer.rect(x, y - selector.y * padding - gridPaddingOffset,
-                    gameState.getLevel().getMatrixSize() * padding - gridCoordinateOffset, gridPaddingOffset);
+                    gameState.gameLevel.getMatrixSize() * padding - gridCoordinateOffset, gridPaddingOffset);
         } else {
-            shapeRenderer.rect(x + selector.x * padding, y - (gameState.getLevel().getMatrixSize() - 1) * padding - gridPaddingOffset,
-                    gridPaddingOffset, gameState.getLevel().getMatrixSize() * padding - gridCoordinateOffset);
+            shapeRenderer.rect(x + selector.x * padding, y - (gameState.gameLevel.getMatrixSize() - 1) * padding - gridPaddingOffset,
+                    gridPaddingOffset, gameState.gameLevel.getMatrixSize() * padding - gridCoordinateOffset);
         }
         shapeRenderer.end();
 
@@ -37,7 +37,7 @@ public class GridGUI extends GUIElement {
         batch.begin();
 
         //Render the matrix
-        gameState.getLevel().getMatrix().forEach((key, value) -> font.draw(batch, value, x + key.x * padding, y - key.y * padding));
+        gameState.gameLevel.getMatrix().forEach((key, value) -> font.draw(batch, value, x + key.x * padding, y - key.y * padding));
 
         batch.end();
     }

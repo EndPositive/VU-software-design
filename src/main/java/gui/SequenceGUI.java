@@ -16,8 +16,8 @@ public class SequenceGUI extends GUIElement {
         font.setColor(Color.BLUE);
         font.draw(batch, "Sequences to complete: ", x, y);
 
-        for (int i = 0; i < gameState.getLevel().getSolutions().size(); i++) {
-            Sequence sequenceTemp = gameState.getLevel().getSolutions().get(i);
+        for (int i = 0; i < gameState.gameLevel.getSolutions().size(); i++) {
+            Sequence sequenceTemp = gameState.gameLevel.getSolutions().get(i);
 
             if (sequenceTemp.isSequenceCompleted(gameState)) {
                 font.setColor(Color.GREEN);

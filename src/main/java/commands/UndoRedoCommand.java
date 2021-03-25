@@ -10,18 +10,18 @@ public abstract class UndoRedoCommand extends Command {
 
     @Override
     public final void tryExecute(GameState gameState) {
-        gameState.getCommandFuture().clear();
-        if (execute(gameState)) gameState.getCommandHistory().push(this);
+        gameState.commandFuture.clear();
+        if (execute(gameState)) gameState.commandHistory.push(this);
     }
 
     public final void tryUndo(GameState gameState) {
         undo(gameState);
-        gameState.getCommandFuture().push(this);
+        gameState.commandFuture.push(this);
     }
 
     public void tryRedo(GameState gameState) {
         // TODO: DUPLICATE CODE LINE 10
         // LINE 10 is empty
-        if (redo(gameState)) gameState.getCommandHistory().push(this);
+        if (redo(gameState)) gameState.commandHistory.push(this);
     }
 }
