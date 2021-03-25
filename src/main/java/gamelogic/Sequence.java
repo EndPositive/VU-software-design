@@ -2,7 +2,6 @@ package main.java.gamelogic;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Sequence {
     private final List<String> seq;
@@ -17,22 +16,13 @@ public class Sequence {
     }
 
     public boolean isSequenceCompleted(GameState gameState) {
-        if (gameState.getBuf().isEmpty()) return false;
-
-        String bufferString = gameState.getBuf().stream()
-                .map(cl -> gameState.getLevel().getMatrix().get(cl) + " ")
-                .reduce("", String::concat);
-        return bufferString.contains(String.join(" ", seq));
+        return Collections.indexOfSubList(gameState.getBuf().toList(), seq) != -1;
     }
 
     public boolean isSequenceFailed(GameState gameState) {
         if (gameState.getBuf().isEmpty()) return false;
 
-        List<String> bufferString = gameState.getBuf().stream()
-                .map(gameState.getLevel().getMatrix()::get)
-                .collect(Collectors.toList());
-
-        int indexOfMatchedSubsequence = indexOfCommonSubsequence(bufferString, seq);
+        int indexOfMatchedSubsequence = indexOfCommonSubsequence(gameState.getBuf().toList(), seq);
 
         // In case of no matched subsequence, check if there are still enough spots in buffer for the sequence
         if (indexOfMatchedSubsequence < 0)

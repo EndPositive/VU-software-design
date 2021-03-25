@@ -1,11 +1,9 @@
 package main.java.gamelogic;
 
 import main.java.commands.Select;
-import main.java.misc.Cell;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Buffer {
     public static final int MAX_OFFSET = 2;
@@ -17,19 +15,15 @@ public class Buffer {
     }
 
     public int size() {
-        return parseBuffer().size();
+        return toList().size();
     }
 
-    public Cell get(int i) {
-        return parseBuffer().get(i);
+    public String get(int i) {
+        return toList().get(i);
     }
 
     public boolean isEmpty() {
-        return parseBuffer().isEmpty();
-    }
-
-    public Stream<Cell> stream() {
-        return parseBuffer().stream();
+        return toList().isEmpty();
     }
 
     public int getMaxBufferLength() {
@@ -40,11 +34,12 @@ public class Buffer {
         return size() == getMaxBufferLength();
     }
 
-    private List<Cell> parseBuffer() {
+    public List<String> toList() {
         return gameState.getCommandHistory().stream()
                 .filter(el -> el instanceof Select)
                 .map(Select.class::cast)
                 .map(Select::getSelected)
+                .map(gameState.getLevel().getMatrix()::get)
                 .collect(Collectors.toList());
     }
 }
