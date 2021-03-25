@@ -22,14 +22,14 @@ public class GameOverScreen extends GameScreen {
     }
 
     @Override
-    public void show() {
-        super.show();
-        Gdx.input.setInputProcessor(new InputAdapter() {
+    public InputAdapter getInputProcessor() {
+        return new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
                 if (keycode == Input.Keys.ESCAPE) Gdx.app.exit();
                 return true;
             }
-        });
+        };
     }
+
 }

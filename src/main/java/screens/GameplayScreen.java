@@ -24,11 +24,8 @@ public class GameplayScreen extends GameScreen {
         ));
     }
 
-    @Override
-    public void show() {
-        super.show();
-
-        Gdx.input.setInputProcessor(new InputAdapter() {
+    public InputAdapter getInputProcessor() {
+        return new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
                 if (keycode == Keys.ESCAPE) {
@@ -44,13 +41,10 @@ public class GameplayScreen extends GameScreen {
 
                 return false;
             }
-        });
+        };
     }
 
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-
+    public void renderCallback() {
         if (gameState.isGameOver()) {
             game.setScreen(new GameOverScreen(game, gameState));
         }

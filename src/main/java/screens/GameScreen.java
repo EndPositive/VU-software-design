@@ -2,6 +2,7 @@ package main.java.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import main.java.gamelogic.GameState;
 import main.java.gui.GUIElement;
@@ -22,13 +23,20 @@ public abstract class GameScreen extends ScreenAdapter {
     }
 
     @Override
-    public void show() {
+    public final void show() {
         guiElements.forEach(GUIElement::show);
+        Gdx.input.setInputProcessor(getInputProcessor());
     }
 
+    public abstract InputAdapter getInputProcessor();
+
     @Override
-    public void render(float delta) {
+    public final void render(float delta) {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
         guiElements.forEach(el -> el.render(gameState));
     }
+
+    public void renderCallback() {
+    }
+
 }
