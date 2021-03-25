@@ -44,6 +44,7 @@ public class GameplayScreen extends GameScreen {
         };
     }
 
+    @Override
     public void renderCallback() {
         if (gameState.isGameOver()) {
             game.setScreen(new GameOverScreen(game, gameState));

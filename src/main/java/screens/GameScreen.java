@@ -34,6 +34,7 @@ public abstract class GameScreen extends ScreenAdapter {
     public final void render(float delta) {
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
         guiElements.forEach(el -> el.render(gameState));
+        renderCallback();
     }
 
     public void renderCallback() {
