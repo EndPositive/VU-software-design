@@ -10,21 +10,14 @@ public abstract class GUIElement {
     protected SpriteBatch batch;
     protected BitmapFont font;
 
-    protected final int padding;
-
-    protected final int gridSelectorSize;
-    protected final int gridPaddingOffset;
-    protected final int gridCoordinateOffset;
+    protected final static int padding = 30;
+    protected final static int gridSelectorSize = padding - 10;
+    protected final static int gridPaddingOffset = padding / 2;
+    protected final static int gridCoordinateOffset = padding / 3;
 
     protected GUIElement(float x, float y) {
         this.x = x;
         this.y = y;
-
-        padding = 30;
-
-        gridSelectorSize = padding - 10;
-        gridPaddingOffset = padding / 2;
-        gridCoordinateOffset = padding / 3;
     }
 
     public final void show() {
