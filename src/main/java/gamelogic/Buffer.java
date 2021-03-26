@@ -7,11 +7,21 @@ import java.util.stream.Collectors;
 
 public class Buffer {
     public static final int MAX_OFFSET = 2;
-    public int offset = 0;
+    private int offset = 0;
     private final GameState gameState;
 
     public Buffer(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        if (gameState.timer.hasStarted() || offset > MAX_OFFSET || offset < -MAX_OFFSET) return;
+
+        this.offset = offset;
     }
 
     public int size() {
