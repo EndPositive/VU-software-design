@@ -17,10 +17,10 @@ public class ScoreGUI extends GUIElement {
 
         font.setColor(Color.PINK);
         font.draw(batch, score != 0 ? "You breached the protocol!" : "Sometimes in life you fail and sometimes you don't succeed :(", x, y);
-        font.draw(batch, "Your score is: ", x, y - padding);
+        font.draw(batch, "Your score is: ", x, y - PADDING);
 
         font.setColor(Color.GOLD);
-        font.draw(batch, String.valueOf(score), x, y - padding * 2);
+        font.draw(batch, String.valueOf(score), x, y - PADDING * 2);
 
         batch.end();
     }

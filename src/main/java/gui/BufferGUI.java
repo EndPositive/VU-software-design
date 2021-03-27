@@ -12,10 +12,10 @@ public class BufferGUI extends GUIElement {
         batch.begin();
 
         for (int i = 0; i < gameState.buffer.getMaxBufferLength(); i++) {
-            font.draw(batch, "__", x + i * padding, y);
+            font.draw(batch, "__", x + i * PADDING, y);
 
             if (gameState.buffer.size() > i) {
-                font.draw(batch, gameState.buffer.get(i), x + i * padding, y);
+                font.draw(batch, gameState.buffer.get(i), x + i * PADDING, y);
             }
         }
 

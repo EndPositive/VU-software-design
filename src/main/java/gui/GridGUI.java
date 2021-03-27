@@ -20,24 +20,24 @@ public class GridGUI extends GUIElement {
         shapeRenderer.setColor(Color.GRAY);
 
         if (gameState.buffer.size() % 2 == 0) {
-            shapeRenderer.rect(x, y - selector.y * padding - gridPaddingOffset,
-                    gameState.gameLevel.getMatrixSize() * padding - gridCoordinateOffset, gridPaddingOffset);
+            shapeRenderer.rect(x, y - selector.y * PADDING - GRID_PADDING_OFFSET,
+                    gameState.gameLevel.getMatrixSize() * PADDING - GRID_COORDINATE_OFFSET, GRID_PADDING_OFFSET);
         } else {
-            shapeRenderer.rect(x + selector.x * padding, y - (gameState.gameLevel.getMatrixSize() - 1) * padding - gridPaddingOffset,
-                    gridPaddingOffset, gameState.gameLevel.getMatrixSize() * padding - gridCoordinateOffset);
+            shapeRenderer.rect(x + selector.x * PADDING, y - (gameState.gameLevel.getMatrixSize() - 1) * PADDING - GRID_PADDING_OFFSET,
+                    GRID_PADDING_OFFSET, gameState.gameLevel.getMatrixSize() * PADDING - GRID_COORDINATE_OFFSET);
         }
         shapeRenderer.end();
 
         //Render the cell selector
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.rect(x + selector.x * padding, y - selector.y * padding - gridPaddingOffset, gridSelectorSize, gridSelectorSize);
+        shapeRenderer.rect(x + selector.x * PADDING, y - selector.y * PADDING - GRID_PADDING_OFFSET, GRID_SELECTOR_SIZE, GRID_SELECTOR_SIZE);
         shapeRenderer.end();
 
         batch.begin();
 
         //Render the matrix
-        gameState.gameLevel.getMatrix().forEach((key, value) -> font.draw(batch, value, x + key.x * padding, y - key.y * padding));
+        gameState.gameLevel.getMatrix().forEach((key, value) -> font.draw(batch, value, x + key.x * PADDING, y - key.y * PADDING));
 
         batch.end();
     }

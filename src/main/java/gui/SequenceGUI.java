@@ -25,7 +25,7 @@ public class SequenceGUI extends GUIElement {
                 font.setColor(Color.RED);
             } else font.setColor(Color.WHITE);
 
-            font.draw(batch, sequenceTemp.toString() + "\n", x, y - i * padding - padding);
+            font.draw(batch, sequenceTemp.toString() + "\n", x, y - i * PADDING - PADDING);
         }
 
         batch.end();
