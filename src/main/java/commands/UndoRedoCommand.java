@@ -20,8 +20,6 @@ public abstract class UndoRedoCommand extends Command {
     }
 
     public void tryRedo(GameState gameState) {
-        // TODO: DUPLICATE CODE LINE 10
-        // LINE 10 is empty
         if (redo(gameState)) gameState.commandHistory.push(this);
     }
 }
