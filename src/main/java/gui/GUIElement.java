@@ -10,10 +10,10 @@ public abstract class GUIElement {
     protected SpriteBatch batch;
     protected BitmapFont font;
 
-    protected final static int PADDING = 30;
-    protected final static int GRID_SELECTOR_SIZE = 20;
-    protected final static int GRID_PADDING_OFFSET = PADDING / 2;
-    protected final static int GRID_COORDINATE_OFFSET = PADDING / 3;
+    protected static final int PADDING = 30;
+    protected static final int GRID_SELECTOR_SIZE = 20;
+    protected static final int GRID_PADDING_OFFSET = PADDING / 2;
+    protected static final int GRID_COORDINATE_OFFSET = PADDING / 3;
 
     protected GUIElement(float x, float y) {
         this.x = x;
