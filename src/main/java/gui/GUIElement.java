@@ -5,22 +5,25 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import main.java.gamelogic.GameState;
 
 public abstract class GUIElement {
-    final float x;
-    final float y;
-    SpriteBatch batch;
-    BitmapFont font;
+    protected final float x;
+    protected final float y;
+    protected SpriteBatch batch;
+    protected BitmapFont font;
 
-    public GUIElement(float x, float y) {
+    protected static final int PADDING = 30;
+    protected static final int GRID_SELECTOR_SIZE = 20;
+    protected static final int GRID_PADDING_OFFSET = PADDING / 2;
+    protected static final int GRID_COORDINATE_OFFSET = PADDING / 3;
+
+    protected GUIElement(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public void create() {
+    public final void show() {
         batch = new SpriteBatch();
         font = new BitmapFont();
     }
 
-    public void render(GameState gameState) {
-
-    }
+    public abstract void render(GameState gameState);
 }

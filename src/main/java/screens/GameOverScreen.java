@@ -1,49 +1,35 @@
 package main.java.screens;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import main.java.gamelogic.GameState;
 import main.java.gui.BufferGUI;
 import main.java.gui.ScoreGUI;
 import main.java.gui.SequenceGUI;
 
-import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import java.util.Arrays;
 
-public class GameOverScreen extends ScreenAdapter {
-    final Game game;
-    final GameState gameState;
-    final ScoreGUI scoreGUI;
-    final BufferGUI bufferGUI;
-    final SequenceGUI sequenceGUI;
+public class GameOverScreen extends GameScreen {
 
     public GameOverScreen(Game game, GameState gameState) {
-        this.game = game;
-        this.gameState = gameState;
-        this.scoreGUI = new ScoreGUI(50, 330);
-        this.bufferGUI = new BufferGUI(50, 230);
-        this.sequenceGUI = new SequenceGUI(50, 200);
+        super(game, gameState, Arrays.asList(
+                new ScoreGUI(50, 330),
+                new BufferGUI(50, 230),
+                new SequenceGUI(50, 200)
+        ));
     }
 
     @Override
-    public void show() {
-        scoreGUI.create();
-        bufferGUI.create();
-        sequenceGUI.create();
-
-        Gdx.input.setInputProcessor(new InputAdapter() {
+    public InputAdapter getInputProcessor() {
+        return new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
                 if (keycode == Input.Keys.ESCAPE) Gdx.app.exit();
                 return true;
             }
-        });
+        };
     }
 
-    @Override
-    public void render(float delta) {
-        Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
-
-        scoreGUI.render(gameState);
-        bufferGUI.render(gameState);
-        sequenceGUI.render(gameState);
-    }
 }
